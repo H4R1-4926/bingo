@@ -12,6 +12,18 @@ class GamePage extends StatelessWidget {
       context.read<GameBloc>().add(const GameEvent.started());
     });
     return Scaffold(
+        appBar: AppBar(
+          forceMaterialTransparency: true,
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.settings,
+                  color: kred,
+                ))
+          ],
+          automaticallyImplyLeading: false,
+        ),
         backgroundColor: kthemecolor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +43,9 @@ class GamePage extends StatelessWidget {
                               crossAxisCount: 5),
                       itemBuilder: (context, index) {
                         return Container(
-                          color: klighttheme,
+                          decoration: BoxDecoration(
+                              color: klighttheme,
+                              borderRadius: BorderRadius.circular(16)),
                           child: BlocBuilder<GameBloc, GameState>(
                             builder: (context, state) {
                               final numbers = state.numbers;
@@ -39,14 +53,119 @@ class GamePage extends StatelessWidget {
                               return Center(
                                 child: Text(
                                   numbers[index],
-                                  style: const TextStyle(color: kWhite),
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 255, 53, 53),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               );
                             },
                           ),
                         );
                       },
-                    )))
+                    ))),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: klighttheme,
+                          borderRadius: BorderRadius.circular(10)),
+                      height: 120,
+                      width: 100,
+                      child: const Center(
+                        child: Text(
+                          'B',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 80,
+                              color: Color.fromARGB(255, 255, 255, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: klighttheme,
+                          borderRadius: BorderRadius.circular(10)),
+                      height: 120,
+                      width: 100,
+                      child: const Center(
+                        child: Text(
+                          'I',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 80,
+                              color: Color.fromARGB(255, 255, 255, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: klighttheme,
+                          borderRadius: BorderRadius.circular(10)),
+                      height: 120,
+                      width: 100,
+                      child: const Center(
+                        child: Text(
+                          'N',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 80,
+                              color: Color.fromARGB(255, 255, 255, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: klighttheme,
+                          borderRadius: BorderRadius.circular(10)),
+                      height: 120,
+                      width: 100,
+                      child: const Center(
+                        child: Text(
+                          'G',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 80,
+                              color: Color.fromARGB(255, 255, 255, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: klighttheme,
+                          borderRadius: BorderRadius.circular(10)),
+                      height: 120,
+                      width: 100,
+                      child: const Center(
+                        child: Text(
+                          'O',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 80,
+                              color: Color.fromARGB(255, 255, 255, 0)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ));
   }
