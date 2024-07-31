@@ -13,11 +13,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => GameBloc(),
-        child: const Homepage(),
+    return BlocProvider(
+      create: (context) => GameBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BlocProvider(
+          create: (context) => GameBloc(),
+          child: const Homepage(),
+        ),
       ),
     );
   }

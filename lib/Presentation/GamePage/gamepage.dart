@@ -8,44 +8,46 @@ class GamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<GameBloc>().add(const GameEvent.started());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<GameBloc>().add(const GameEvent.started());
+    });
     return Scaffold(
-      backgroundColor: kthemecolor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: SizedBox(
-                height: MediaQuery.of(context).size.height / 1.5,
-                width: MediaQuery.of(context).size.width / 1.2,
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 25,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 8,
-                      mainAxisExtent: 90,
-                      crossAxisSpacing: 8,
-                      crossAxisCount: 5),
-                  itemBuilder: (context, index) {
-                    return BlocBuilder<GameBloc, GameState>(
-                      builder: (context, state) {
-                        final numbers = state.numbers;
+        backgroundColor: kthemecolor,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+                child: SizedBox(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 25,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisSpacing: 8,
+                              mainAxisExtent: 90,
+                              crossAxisSpacing: 8,
+                              crossAxisCount: 5),
+                      itemBuilder: (context, index) {
                         return Container(
                           color: klighttheme,
-                          child: Center(
-                            child: Text(
-                              numbers[index],
-                              style: TextStyle(color: kWhite),
-                            ),
+                          child: BlocBuilder<GameBloc, GameState>(
+                            builder: (context, state) {
+                              final numbers = state.numbers;
+
+                              return Center(
+                                child: Text(
+                                  numbers[index],
+                                  style: const TextStyle(color: kWhite),
+                                ),
+                              );
+                            },
                           ),
                         );
                       },
-                    );
-                  },
-                )),
-          ),
-        ],
-      ),
-    );
+                    )))
+          ],
+        ));
   }
 }
