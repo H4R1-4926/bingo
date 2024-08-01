@@ -52,25 +52,34 @@ class GamePage extends StatelessWidget {
                                   crossAxisSpacing: 8,
                                   crossAxisCount: 5),
                           itemBuilder: (context, index) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                  color: klighttheme,
-                                  borderRadius: BorderRadius.circular(16)),
-                              child: BlocBuilder<GameBloc, GameState>(
-                                builder: (context, state) {
-                                  final numbers = state.numbers;
+                            return GestureDetector(
+                              onTap: () {
+                                context
+                                    .read<GameBloc>()
+                                    .add(Mark(index: index));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: klighttheme,
+                                    borderRadius: BorderRadius.circular(16)),
+                                child: BlocBuilder<GameBloc, GameState>(
+                                  builder: (context, state) {
+                                    final numbers = state.numbers;
 
-                                  return Center(
-                                    child: Text(
-                                      numbers[index],
-                                      style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 255, 53, 53),
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  );
-                                },
+                                    return Center(
+                                      child: Text(
+                                        state.isClicked[index]
+                                            ? 'X'
+                                            : numbers[index],
+                                        style: const TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 255, 53, 53),
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             );
                           },
