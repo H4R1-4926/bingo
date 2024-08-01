@@ -1,4 +1,5 @@
 import 'package:bingo/Application/GameBlocs/game_bloc.dart';
+import 'package:bingo/Application/Splash/splash_bloc.dart';
 import 'package:bingo/Presentation/Homepage/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,14 +14,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GameBloc(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: BlocProvider(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
           create: (context) => GameBloc(),
-          child: const Homepage(),
         ),
+        BlocProvider(
+          create: (context) => SplashBloc(),
+        ),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Homepage(),
       ),
     );
   }

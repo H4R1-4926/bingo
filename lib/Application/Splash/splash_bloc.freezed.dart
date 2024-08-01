@@ -166,7 +166,8 @@ abstract class _Started implements SplashEvent {
 
 /// @nodoc
 mixin _$SplashState {
-  bool get onPressed => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  bool get loaded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SplashStateCopyWith<SplashState> get copyWith =>
@@ -179,7 +180,7 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call({bool onPressed});
+  $Res call({bool loading, bool loaded});
 }
 
 /// @nodoc
@@ -195,12 +196,17 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? onPressed = null,
+    Object? loading = null,
+    Object? loaded = null,
   }) {
     return _then(_value.copyWith(
-      onPressed: null == onPressed
-          ? _value.onPressed
-          : onPressed // ignore: cast_nullable_to_non_nullable
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loaded: null == loaded
+          ? _value.loaded
+          : loaded // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -214,7 +220,7 @@ abstract class _$$SplashStateImplCopyWith<$Res>
       __$$SplashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool onPressed});
+  $Res call({bool loading, bool loaded});
 }
 
 /// @nodoc
@@ -228,12 +234,17 @@ class __$$SplashStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? onPressed = null,
+    Object? loading = null,
+    Object? loaded = null,
   }) {
     return _then(_$SplashStateImpl(
-      onPressed: null == onPressed
-          ? _value.onPressed
-          : onPressed // ignore: cast_nullable_to_non_nullable
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loaded: null == loaded
+          ? _value.loaded
+          : loaded // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -242,14 +253,16 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SplashStateImpl implements _SplashState {
-  const _$SplashStateImpl({required this.onPressed});
+  const _$SplashStateImpl({required this.loading, required this.loaded});
 
   @override
-  final bool onPressed;
+  final bool loading;
+  @override
+  final bool loaded;
 
   @override
   String toString() {
-    return 'SplashState(onPressed: $onPressed)';
+    return 'SplashState(loading: $loading, loaded: $loaded)';
   }
 
   @override
@@ -257,12 +270,12 @@ class _$SplashStateImpl implements _SplashState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SplashStateImpl &&
-            (identical(other.onPressed, onPressed) ||
-                other.onPressed == onPressed));
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.loaded, loaded) || other.loaded == loaded));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onPressed);
+  int get hashCode => Object.hash(runtimeType, loading, loaded);
 
   @JsonKey(ignore: true)
   @override
@@ -272,11 +285,14 @@ class _$SplashStateImpl implements _SplashState {
 }
 
 abstract class _SplashState implements SplashState {
-  const factory _SplashState({required final bool onPressed}) =
-      _$SplashStateImpl;
+  const factory _SplashState(
+      {required final bool loading,
+      required final bool loaded}) = _$SplashStateImpl;
 
   @override
-  bool get onPressed;
+  bool get loading;
+  @override
+  bool get loaded;
   @override
   @JsonKey(ignore: true)
   _$$SplashStateImplCopyWith<_$SplashStateImpl> get copyWith =>
