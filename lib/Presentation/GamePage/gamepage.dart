@@ -1,4 +1,4 @@
-import 'package:bingo/Application/bloc/game_bloc.dart';
+import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
