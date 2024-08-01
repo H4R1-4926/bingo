@@ -42,7 +42,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     });
     on<Mark>((event, emit) {
       final marked = List<bool>.from(state.isClicked);
-      marked[event.index] = true; // Mark the clicked container
+      marked[event.index] = true;
       emit(GameState(numbers: state.numbers, isClicked: marked));
     });
   }
