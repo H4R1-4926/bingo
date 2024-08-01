@@ -35,158 +35,84 @@ class GamePage extends StatelessWidget {
               automaticallyImplyLeading: false,
             ),
             backgroundColor: kthemecolor,
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                    child: SizedBox(
-                        height: MediaQuery.of(context).size.height / 1.5,
-                        width: MediaQuery.of(context).size.width / 1.2,
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 25,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  mainAxisSpacing: 8,
-                                  mainAxisExtent: 90,
-                                  crossAxisSpacing: 8,
-                                  crossAxisCount: 5),
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                context
-                                    .read<GameBloc>()
-                                    .add(Mark(index: index));
-                              },
-                              child: Container(
+            body: BlocBuilder<GameBloc, GameState>(
+              builder: (context, state) {
+                final numbers = state.numbers;
+                final bingo = state.bingoLetters;
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                        child: SizedBox(
+                      height: MediaQuery.of(context).size.height / 1.5,
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      child: GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 25,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                mainAxisSpacing: 8,
+                                mainAxisExtent: 90,
+                                crossAxisSpacing: 8,
+                                crossAxisCount: 5),
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              context.read<GameBloc>().add(Mark(index: index));
+                            },
+                            child: Container(
                                 decoration: BoxDecoration(
-                                    color: klighttheme,
+                                    color: state.isClicked[index]
+                                        ? kred
+                                        : klighttheme,
                                     borderRadius: BorderRadius.circular(16)),
-                                child: BlocBuilder<GameBloc, GameState>(
-                                  builder: (context, state) {
-                                    final numbers = state.numbers;
-
-                                    return Center(
-                                      child: Text(
-                                        state.isClicked[index]
-                                            ? 'X'
-                                            : numbers[index],
-                                        style: const TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 255, 53, 53),
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    );
-                                  },
+                                child: Center(
+                                  child: Text(
+                                    state.isClicked[index]
+                                        ? 'X'
+                                        : numbers[index],
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 255, 53, 53),
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                )),
+                          );
+                        },
+                      ),
+                    )),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Row(
+                        children: [
+                          for (int i = 0; i < 5; i++)
+                            Flexible(
+                              child: Container(
+                                margin: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    color:
+                                        bingo[i] ? Colors.green : klighttheme,
+                                    borderRadius: BorderRadius.circular(10)),
+                                height: 120,
+                                width: 100,
+                                child: Center(
+                                  child: Text(
+                                    'BINGO'[i],
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 80,
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 0)),
+                                  ),
                                 ),
                               ),
-                            );
-                          },
-                        ))),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: klighttheme,
-                              borderRadius: BorderRadius.circular(10)),
-                          height: 120,
-                          width: 100,
-                          child: const Center(
-                            child: Text(
-                              'B',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 80,
-                                  color: Color.fromARGB(255, 255, 255, 0)),
                             ),
-                          ),
-                        ),
+                        ],
                       ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: klighttheme,
-                              borderRadius: BorderRadius.circular(10)),
-                          height: 120,
-                          width: 100,
-                          child: const Center(
-                            child: Text(
-                              'I',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 80,
-                                  color: Color.fromARGB(255, 255, 255, 0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: klighttheme,
-                              borderRadius: BorderRadius.circular(10)),
-                          height: 120,
-                          width: 100,
-                          child: const Center(
-                            child: Text(
-                              'N',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 80,
-                                  color: Color.fromARGB(255, 255, 255, 0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: klighttheme,
-                              borderRadius: BorderRadius.circular(10)),
-                          height: 120,
-                          width: 100,
-                          child: const Center(
-                            child: Text(
-                              'G',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 80,
-                                  color: Color.fromARGB(255, 255, 255, 0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: klighttheme,
-                              borderRadius: BorderRadius.circular(10)),
-                          height: 120,
-                          width: 100,
-                          child: const Center(
-                            child: Text(
-                              'O',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 80,
-                                  color: Color.fromARGB(255, 255, 255, 0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                    )
+                  ],
+                );
+              },
             ));
       },
     );

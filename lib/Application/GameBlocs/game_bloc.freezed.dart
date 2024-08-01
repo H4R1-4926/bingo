@@ -311,7 +311,7 @@ abstract class Mark implements GameEvent {
 mixin _$GameState {
   List<String> get numbers => throw _privateConstructorUsedError;
   List<bool> get isClicked => throw _privateConstructorUsedError;
-  List<int> get wiinningCombs => throw _privateConstructorUsedError;
+  List<bool> get bingoLetters => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameStateCopyWith<GameState> get copyWith =>
@@ -324,7 +324,7 @@ abstract class $GameStateCopyWith<$Res> {
       _$GameStateCopyWithImpl<$Res, GameState>;
   @useResult
   $Res call(
-      {List<String> numbers, List<bool> isClicked, List<int> wiinningCombs});
+      {List<String> numbers, List<bool> isClicked, List<bool> bingoLetters});
 }
 
 /// @nodoc
@@ -342,7 +342,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   $Res call({
     Object? numbers = null,
     Object? isClicked = null,
-    Object? wiinningCombs = null,
+    Object? bingoLetters = null,
   }) {
     return _then(_value.copyWith(
       numbers: null == numbers
@@ -353,10 +353,10 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
           ? _value.isClicked
           : isClicked // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      wiinningCombs: null == wiinningCombs
-          ? _value.wiinningCombs
-          : wiinningCombs // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      bingoLetters: null == bingoLetters
+          ? _value.bingoLetters
+          : bingoLetters // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ) as $Val);
   }
 }
@@ -370,7 +370,7 @@ abstract class _$$GameStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<String> numbers, List<bool> isClicked, List<int> wiinningCombs});
+      {List<String> numbers, List<bool> isClicked, List<bool> bingoLetters});
 }
 
 /// @nodoc
@@ -386,7 +386,7 @@ class __$$GameStateImplCopyWithImpl<$Res>
   $Res call({
     Object? numbers = null,
     Object? isClicked = null,
-    Object? wiinningCombs = null,
+    Object? bingoLetters = null,
   }) {
     return _then(_$GameStateImpl(
       numbers: null == numbers
@@ -397,10 +397,10 @@ class __$$GameStateImplCopyWithImpl<$Res>
           ? _value._isClicked
           : isClicked // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      wiinningCombs: null == wiinningCombs
-          ? _value._wiinningCombs
-          : wiinningCombs // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      bingoLetters: null == bingoLetters
+          ? _value._bingoLetters
+          : bingoLetters // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ));
   }
 }
@@ -411,10 +411,10 @@ class _$GameStateImpl implements _GameState {
   const _$GameStateImpl(
       {required final List<String> numbers,
       required final List<bool> isClicked,
-      required final List<int> wiinningCombs})
+      required final List<bool> bingoLetters})
       : _numbers = numbers,
         _isClicked = isClicked,
-        _wiinningCombs = wiinningCombs;
+        _bingoLetters = bingoLetters;
 
   final List<String> _numbers;
   @override
@@ -432,17 +432,17 @@ class _$GameStateImpl implements _GameState {
     return EqualUnmodifiableListView(_isClicked);
   }
 
-  final List<int> _wiinningCombs;
+  final List<bool> _bingoLetters;
   @override
-  List<int> get wiinningCombs {
-    if (_wiinningCombs is EqualUnmodifiableListView) return _wiinningCombs;
+  List<bool> get bingoLetters {
+    if (_bingoLetters is EqualUnmodifiableListView) return _bingoLetters;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_wiinningCombs);
+    return EqualUnmodifiableListView(_bingoLetters);
   }
 
   @override
   String toString() {
-    return 'GameState(numbers: $numbers, isClicked: $isClicked, wiinningCombs: $wiinningCombs)';
+    return 'GameState(numbers: $numbers, isClicked: $isClicked, bingoLetters: $bingoLetters)';
   }
 
   @override
@@ -454,7 +454,7 @@ class _$GameStateImpl implements _GameState {
             const DeepCollectionEquality()
                 .equals(other._isClicked, _isClicked) &&
             const DeepCollectionEquality()
-                .equals(other._wiinningCombs, _wiinningCombs));
+                .equals(other._bingoLetters, _bingoLetters));
   }
 
   @override
@@ -462,7 +462,7 @@ class _$GameStateImpl implements _GameState {
       runtimeType,
       const DeepCollectionEquality().hash(_numbers),
       const DeepCollectionEquality().hash(_isClicked),
-      const DeepCollectionEquality().hash(_wiinningCombs));
+      const DeepCollectionEquality().hash(_bingoLetters));
 
   @JsonKey(ignore: true)
   @override
@@ -475,14 +475,14 @@ abstract class _GameState implements GameState {
   const factory _GameState(
       {required final List<String> numbers,
       required final List<bool> isClicked,
-      required final List<int> wiinningCombs}) = _$GameStateImpl;
+      required final List<bool> bingoLetters}) = _$GameStateImpl;
 
   @override
   List<String> get numbers;
   @override
   List<bool> get isClicked;
   @override
-  List<int> get wiinningCombs;
+  List<bool> get bingoLetters;
   @override
   @JsonKey(ignore: true)
   _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>

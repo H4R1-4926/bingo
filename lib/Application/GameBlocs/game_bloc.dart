@@ -39,45 +39,58 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     on<_Started>((event, emit) {
       numbers.shuffle(Random());
       emit(GameState(
-          numbers: numbers,
-          isClicked: state.isClicked,
-          wiinningCombs: state.wiinningCombs));
+        numbers: numbers,
+        isClicked: state.isClicked,
+        bingoLetters: state.bingoLetters,
+      ));
     });
     on<Mark>((event, emit) {
       final marked = List<bool>.from(state.isClicked);
-      marked[event.index] = true;
-      final winningCombs = _checkForWinningCombination(marked);
+      marked[event.index] = !marked[event.index];
+      final bingoLetters = _updateBingoLetters(marked);
+
       emit(GameState(
-          numbers: state.numbers,
-          isClicked: marked,
-          wiinningCombs: winningCombs));
+        numbers: state.numbers,
+        isClicked: marked,
+        bingoLetters: bingoLetters,
+      ));
     });
   }
-  List<int> _checkForWinningCombination(List<bool> marked) {
-    const List<List<int>> winningCombinations = [
-      // Rows
-      [0, 1, 2, 3, 4],
-      [5, 6, 7, 8, 9],
-      [10, 11, 12, 13, 14],
-      [15, 16, 17, 18, 19],
-      [20, 21, 22, 23, 24],
+  List<bool> _updateBingoLetters(List<bool> isClicked) {
+    final bingoLetters = List<bool>.filled(5, false);
+
+    final winningCombinations = [
+      [1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10],
+      [11, 12, 13, 14, 15],
+      [16, 17, 18, 19, 20],
+      [21, 22, 23, 24, 25],
+
       // Columns
-      [0, 5, 10, 15, 20],
       [1, 6, 11, 16, 21],
       [2, 7, 12, 17, 22],
       [3, 8, 13, 18, 23],
       [4, 9, 14, 19, 24],
+      [5, 10, 15, 20, 25],
+
       // Diagonals
-      [0, 6, 12, 18, 24],
-      [4, 8, 12, 16, 20],
+      [1, 7, 13, 19, 25],
+      [5, 9, 13, 17, 21],
     ];
 
-    for (var combination in winningCombinations) {
-      if (combination.every((index) => marked[index])) {
-        return combination;
+    List<bool> convertedClicked =
+        List.generate(25, (index) => isClicked[index]);
+
+    void checkWinningCombination(List<int> combination, int index) {
+      if (combination.every((i) => convertedClicked[i - 1])) {
+        bingoLetters[index] = true;
       }
     }
 
-    return [];
+    for (int i = 0; i < winningCombinations.length; i++) {
+      checkWinningCombination(winningCombinations[i], i);
+    }
+
+    return bingoLetters;
   }
 }
