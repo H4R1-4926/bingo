@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Application/Splash/splash_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
@@ -12,10 +14,9 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<GameBloc>().add(const GameEvent.started());
-    });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<SplashBloc>().add(const SplashEvent.started());
     });
+
     return BlocBuilder<SplashBloc, SplashState>(
       builder: (context, state) {
         if (state.loading) {
@@ -38,7 +39,12 @@ class GamePage extends StatelessWidget {
             body: BlocBuilder<GameBloc, GameState>(
               builder: (context, state) {
                 final numbers = state.numbers;
-                final bingo = state.bingoLetters;
+
+                log(state.winnibgCombs.toString());
+
+                // Count the number of true values in winningCombs
+                int trueCount =
+                    state.winnibgCombs.where((element) => element).length;
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -58,7 +64,11 @@ class GamePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              context.read<GameBloc>().add(Mark(index: index));
+                              if (!state.isClicked[index]) {
+                                context
+                                    .read<GameBloc>()
+                                    .add(Mark(index: index));
+                              }
                             },
                             child: Container(
                                 decoration: BoxDecoration(
@@ -83,32 +93,108 @@ class GamePage extends StatelessWidget {
                     )),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Row(
-                        children: [
-                          for (int i = 0; i < 5; i++)
-                            Flexible(
-                              child: Container(
-                                margin: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                    color:
-                                        bingo[i] ? Colors.green : klighttheme,
-                                    borderRadius: BorderRadius.circular(10)),
-                                height: 120,
-                                width: 100,
-                                child: Center(
-                                  child: Text(
-                                    'BINGO'[i],
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 80,
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 0)),
-                                  ),
-                                ),
+                      child: Row(children: [
+                        Flexible(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color:
+                                    trueCount > 0 ? Colors.green : klighttheme,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 120,
+                            width: 100,
+                            child: const Center(
+                              child: Text(
+                                'B',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80,
+                                    color: Color.fromARGB(255, 255, 255, 0)),
                               ),
                             ),
-                        ],
-                      ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color:
+                                    trueCount > 1 ? Colors.green : klighttheme,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 120,
+                            width: 100,
+                            child: const Center(
+                              child: Text(
+                                'I',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80,
+                                    color: Color.fromARGB(255, 255, 255, 0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color:
+                                    trueCount > 2 ? Colors.green : klighttheme,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 120,
+                            width: 100,
+                            child: const Center(
+                              child: Text(
+                                'N',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80,
+                                    color: Color.fromARGB(255, 255, 255, 0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color:
+                                    trueCount > 3 ? Colors.green : klighttheme,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 120,
+                            width: 100,
+                            child: const Center(
+                              child: Text(
+                                'G',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80,
+                                    color: Color.fromARGB(255, 255, 255, 0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color:
+                                    trueCount > 4 ? Colors.green : klighttheme,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 120,
+                            width: 100,
+                            child: const Center(
+                              child: Text(
+                                'O',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80,
+                                    color: Color.fromARGB(255, 255, 255, 0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
                     )
                   ],
                 );
