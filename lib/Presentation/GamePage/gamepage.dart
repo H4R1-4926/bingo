@@ -4,6 +4,7 @@ import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Application/Splash/splash_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Presentation/Splash/starting_screen.dart';
+import 'package:bingo/Presentation/Win/winpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +37,14 @@ class GamePage extends StatelessWidget {
               automaticallyImplyLeading: false,
             ),
             backgroundColor: kthemecolor,
-            body: BlocBuilder<GameBloc, GameState>(
+            body: BlocConsumer<GameBloc, GameState>(
+              listener: (context, state) {
+                if (state.winnibgCombs.where((element) => element).length > 4) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Win(),
+                  ));
+                }
+              },
               builder: (context, state) {
                 final numbers = state.numbers;
 
@@ -45,6 +53,7 @@ class GamePage extends StatelessWidget {
                 // Count the number of true values in winningCombs
                 int trueCount =
                     state.winnibgCombs.where((element) => element).length;
+
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
