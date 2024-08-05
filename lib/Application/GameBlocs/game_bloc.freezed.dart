@@ -20,18 +20,21 @@ mixin _$GameEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) mark,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? mark,
+    TResult? Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? mark,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$GameEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(Mark value) mark,
+    required TResult Function(Reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(Mark value)? mark,
+    TResult? Function(Reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(Mark value)? mark,
+    TResult Function(Reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) mark,
+    required TResult Function() reset,
   }) {
     return started();
   }
@@ -122,6 +129,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? mark,
+    TResult? Function()? reset,
   }) {
     return started?.call();
   }
@@ -131,6 +139,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? mark,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,6 +153,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(Mark value) mark,
+    required TResult Function(Reset value) reset,
   }) {
     return started(this);
   }
@@ -153,6 +163,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(Mark value)? mark,
+    TResult? Function(Reset value)? reset,
   }) {
     return started?.call(this);
   }
@@ -162,6 +173,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(Mark value)? mark,
+    TResult Function(Reset value)? reset,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -240,6 +252,7 @@ class _$MarkImpl implements Mark {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) mark,
+    required TResult Function() reset,
   }) {
     return mark(index);
   }
@@ -249,6 +262,7 @@ class _$MarkImpl implements Mark {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? mark,
+    TResult? Function()? reset,
   }) {
     return mark?.call(index);
   }
@@ -258,6 +272,7 @@ class _$MarkImpl implements Mark {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? mark,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (mark != null) {
@@ -271,6 +286,7 @@ class _$MarkImpl implements Mark {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(Mark value) mark,
+    required TResult Function(Reset value) reset,
   }) {
     return mark(this);
   }
@@ -280,6 +296,7 @@ class _$MarkImpl implements Mark {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(Mark value)? mark,
+    TResult? Function(Reset value)? reset,
   }) {
     return mark?.call(this);
   }
@@ -289,6 +306,7 @@ class _$MarkImpl implements Mark {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(Mark value)? mark,
+    TResult Function(Reset value)? reset,
     required TResult orElse(),
   }) {
     if (mark != null) {
@@ -305,6 +323,114 @@ abstract class Mark implements GameEvent {
   @JsonKey(ignore: true)
   _$$MarkImplCopyWith<_$MarkImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$GameEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetImpl implements Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'GameEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index) mark,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int index)? mark,
+    TResult? Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index)? mark,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(Mark value) mark,
+    required TResult Function(Reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(Mark value)? mark,
+    TResult? Function(Reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(Mark value)? mark,
+    TResult Function(Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Reset implements GameEvent {
+  const factory Reset() = _$ResetImpl;
 }
 
 /// @nodoc

@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:bingo/Presentation/Homepage/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Win extends StatefulWidget {
   const Win({super.key});
@@ -60,6 +62,7 @@ class _WinState extends State<Win> {
           ),
           ElevatedButton(
               onPressed: () {
+                context.read<GameBloc>().add(const Reset());
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => const GamePage(),

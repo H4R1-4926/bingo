@@ -74,6 +74,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         winnibgCombs: winningCombinations,
       ));
     });
+    on<Reset>((event, emit) {
+      emit(GameState.initial());
+    });
   }
   List<bool> checkWinningCombinations(List<bool> isClicked) {
     List<bool> winningCombs = List.filled(12, false);
