@@ -40,7 +40,7 @@ class GamePage extends StatelessWidget {
             body: BlocConsumer<GameBloc, GameState>(
               listener: (context, state) {
                 if (state.winnibgCombs.where((element) => element).length > 4) {
-                  Navigator.of(context).push(MaterialPageRoute(
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const Win(),
                   ));
                 }
