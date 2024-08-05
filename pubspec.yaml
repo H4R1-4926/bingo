@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
+  audioplayers: ^5.0.0
   bloc: ^8.1.4
   flutter:
     sdk: flutter
@@ -28,3 +29,4 @@ flutter:
 
     - assets/img/
     - assets/lottie/
+    - assets/music/bg.mp3
