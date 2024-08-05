@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Application/Splash/splash_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
+import 'package:bingo/Presentation/Homepage/home.dart';
 import 'package:bingo/Presentation/Splash/starting_screen.dart';
 import 'package:bingo/Presentation/Win/winpage.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,75 @@ class GamePage extends StatelessWidget {
               forceMaterialTransparency: true,
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showMenu(
+                          color: klighttheme,
+                          surfaceTintColor: klighttheme,
+                          context: context,
+                          position:
+                              const RelativeRect.fromLTRB(75, 90, 045, 075),
+                          items: [
+                            PopupMenuItem(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                          backgroundColor: klighttheme,
+                                          title: const Center(
+                                              child: Text(
+                                            'You want to quit?',
+                                            style: TextStyle(
+                                                fontSize: 17, color: kWhite),
+                                          )),
+                                          content: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                style: const ButtonStyle(
+                                                    backgroundColor:
+                                                        WidgetStatePropertyAll(
+                                                            Colors.redAccent)),
+                                                child: const Text(
+                                                  'No',
+                                                  style:
+                                                      TextStyle(color: kWhite),
+                                                ),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const Homepage(),
+                                                      ),
+                                                      (Route<dynamic> route) =>
+                                                          false);
+                                                },
+                                                style: const ButtonStyle(
+                                                    backgroundColor:
+                                                        WidgetStatePropertyAll(
+                                                            Colors.redAccent)),
+                                                child: const Text('Yes',
+                                                    style: TextStyle(
+                                                        color: kWhite)),
+                                              ),
+                                            ],
+                                          ));
+                                    },
+                                  );
+                                },
+                                child: const Text(
+                                  'Home',
+                                  style: TextStyle(color: kWhite),
+                                ))
+                          ]);
+                    },
                     icon: const Icon(
                       Icons.settings,
                       color: kred,
