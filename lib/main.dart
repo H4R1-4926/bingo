@@ -1,13 +1,12 @@
 import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Application/Splash/splash_bloc.dart';
-import 'package:bingo/Infrastructure/music/music.dart';
 import 'package:bingo/Presentation/Homepage/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Audio.playMusic();
+  
   runApp(const MainApp());
 }
 
