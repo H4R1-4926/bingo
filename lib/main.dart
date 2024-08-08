@@ -1,3 +1,4 @@
+import 'package:bingo/Application/Background%20Song/music_bloc.dart';
 import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Application/Splash/splash_bloc.dart';
 import 'package:bingo/Presentation/Homepage/home.dart';
@@ -21,6 +22,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SplashBloc(),
+        ),
+        BlocProvider(
+          create: (context) => MusicBloc(),
         ),
       ],
       child: const MaterialApp(

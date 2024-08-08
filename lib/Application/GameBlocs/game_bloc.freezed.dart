@@ -77,6 +77,9 @@ class _$GameEventCopyWithImpl<$Res, $Val extends GameEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -93,6 +96,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -203,6 +209,8 @@ class __$$MarkImplCopyWithImpl<$Res>
   __$$MarkImplCopyWithImpl(_$MarkImpl _value, $Res Function(_$MarkImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -241,7 +249,9 @@ class _$MarkImpl implements Mark {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MarkImplCopyWith<_$MarkImpl> get copyWith =>
@@ -320,7 +330,10 @@ abstract class Mark implements GameEvent {
   const factory Mark({required final int index}) = _$MarkImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MarkImplCopyWith<_$MarkImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -339,6 +352,9 @@ class __$$ResetImplCopyWithImpl<$Res>
   __$$ResetImplCopyWithImpl(
       _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -439,7 +455,9 @@ mixin _$GameState {
   List<bool> get isClicked => throw _privateConstructorUsedError;
   List<bool> get winnibgCombs => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GameStateCopyWith<GameState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -463,6 +481,8 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GameState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -507,6 +527,8 @@ class __$$GameStateImplCopyWithImpl<$Res>
       _$GameStateImpl _value, $Res Function(_$GameStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GameState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -590,7 +612,9 @@ class _$GameStateImpl implements _GameState {
       const DeepCollectionEquality().hash(_isClicked),
       const DeepCollectionEquality().hash(_winnibgCombs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GameState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
@@ -609,8 +633,11 @@ abstract class _GameState implements GameState {
   List<bool> get isClicked;
   @override
   List<bool> get winnibgCombs;
+
+  /// Create a copy of GameState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
