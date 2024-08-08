@@ -1,6 +1,5 @@
 import 'package:bingo/Application/Background%20Song/music_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
-import 'package:bingo/Infrastructure/music/music.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,7 @@ class Homepage extends StatelessWidget {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           state.audio.bgPlay();
         });
-        final ismuted = !state.isMuted;
+
         return Scaffold(
           extendBodyBehindAppBar: true,
           backgroundColor: kthemecolor,
@@ -30,9 +29,7 @@ class Homepage extends StatelessWidget {
             forceMaterialTransparency: true,
             actions: [
               IconButton(
-                  onPressed: () {
-                    Audio().stopPlaing();
-                  },
+                  onPressed: () {},
                   icon: const Icon(
                     Icons.volume_mute,
                     color: kred,
