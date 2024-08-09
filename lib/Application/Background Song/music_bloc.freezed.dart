@@ -19,32 +19,38 @@ mixin _$MusicEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() appOpensAndInsideApp,
+    required TResult Function() toggle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appOpensAndInsideApp,
+    TResult? Function()? toggle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appOpensAndInsideApp,
+    TResult Function()? toggle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppOpensAndInsideApp value) appOpensAndInsideApp,
+    required TResult Function(Toggle value) toggle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppOpensAndInsideApp value)? appOpensAndInsideApp,
+    TResult? Function(Toggle value)? toggle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppOpensAndInsideApp value)? appOpensAndInsideApp,
+    TResult Function(Toggle value)? toggle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$AppOpensAndInsideAppImpl implements AppOpensAndInsideApp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() appOpensAndInsideApp,
+    required TResult Function() toggle,
   }) {
     return appOpensAndInsideApp();
   }
@@ -122,6 +129,7 @@ class _$AppOpensAndInsideAppImpl implements AppOpensAndInsideApp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? appOpensAndInsideApp,
+    TResult? Function()? toggle,
   }) {
     return appOpensAndInsideApp?.call();
   }
@@ -130,6 +138,7 @@ class _$AppOpensAndInsideAppImpl implements AppOpensAndInsideApp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appOpensAndInsideApp,
+    TResult Function()? toggle,
     required TResult orElse(),
   }) {
     if (appOpensAndInsideApp != null) {
@@ -142,6 +151,7 @@ class _$AppOpensAndInsideAppImpl implements AppOpensAndInsideApp {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppOpensAndInsideApp value) appOpensAndInsideApp,
+    required TResult Function(Toggle value) toggle,
   }) {
     return appOpensAndInsideApp(this);
   }
@@ -150,6 +160,7 @@ class _$AppOpensAndInsideAppImpl implements AppOpensAndInsideApp {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppOpensAndInsideApp value)? appOpensAndInsideApp,
+    TResult? Function(Toggle value)? toggle,
   }) {
     return appOpensAndInsideApp?.call(this);
   }
@@ -158,6 +169,7 @@ class _$AppOpensAndInsideAppImpl implements AppOpensAndInsideApp {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppOpensAndInsideApp value)? appOpensAndInsideApp,
+    TResult Function(Toggle value)? toggle,
     required TResult orElse(),
   }) {
     if (appOpensAndInsideApp != null) {
@@ -172,9 +184,115 @@ abstract class AppOpensAndInsideApp implements MusicEvent {
 }
 
 /// @nodoc
+abstract class _$$ToggleImplCopyWith<$Res> {
+  factory _$$ToggleImplCopyWith(
+          _$ToggleImpl value, $Res Function(_$ToggleImpl) then) =
+      __$$ToggleImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ToggleImplCopyWithImpl<$Res>
+    extends _$MusicEventCopyWithImpl<$Res, _$ToggleImpl>
+    implements _$$ToggleImplCopyWith<$Res> {
+  __$$ToggleImplCopyWithImpl(
+      _$ToggleImpl _value, $Res Function(_$ToggleImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MusicEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ToggleImpl implements Toggle {
+  const _$ToggleImpl();
+
+  @override
+  String toString() {
+    return 'MusicEvent.toggle()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ToggleImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() appOpensAndInsideApp,
+    required TResult Function() toggle,
+  }) {
+    return toggle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? appOpensAndInsideApp,
+    TResult? Function()? toggle,
+  }) {
+    return toggle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? appOpensAndInsideApp,
+    TResult Function()? toggle,
+    required TResult orElse(),
+  }) {
+    if (toggle != null) {
+      return toggle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AppOpensAndInsideApp value) appOpensAndInsideApp,
+    required TResult Function(Toggle value) toggle,
+  }) {
+    return toggle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AppOpensAndInsideApp value)? appOpensAndInsideApp,
+    TResult? Function(Toggle value)? toggle,
+  }) {
+    return toggle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AppOpensAndInsideApp value)? appOpensAndInsideApp,
+    TResult Function(Toggle value)? toggle,
+    required TResult orElse(),
+  }) {
+    if (toggle != null) {
+      return toggle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Toggle implements MusicEvent {
+  const factory Toggle() = _$ToggleImpl;
+}
+
+/// @nodoc
 mixin _$MusicState {
   bool get isMuted => throw _privateConstructorUsedError;
-  Audio get audio => throw _privateConstructorUsedError;
+  Future<void>? get play => throw _privateConstructorUsedError;
+  Audio? get stop => throw _privateConstructorUsedError;
 
   /// Create a copy of MusicState
   /// with the given fields replaced by the non-null parameter values.
@@ -189,7 +307,7 @@ abstract class $MusicStateCopyWith<$Res> {
           MusicState value, $Res Function(MusicState) then) =
       _$MusicStateCopyWithImpl<$Res, MusicState>;
   @useResult
-  $Res call({bool isMuted, Audio audio});
+  $Res call({bool isMuted, Future<void>? play, Audio? stop});
 }
 
 /// @nodoc
@@ -208,17 +326,22 @@ class _$MusicStateCopyWithImpl<$Res, $Val extends MusicState>
   @override
   $Res call({
     Object? isMuted = null,
-    Object? audio = null,
+    Object? play = freezed,
+    Object? stop = freezed,
   }) {
     return _then(_value.copyWith(
       isMuted: null == isMuted
           ? _value.isMuted
           : isMuted // ignore: cast_nullable_to_non_nullable
               as bool,
-      audio: null == audio
-          ? _value.audio
-          : audio // ignore: cast_nullable_to_non_nullable
-              as Audio,
+      play: freezed == play
+          ? _value.play
+          : play // ignore: cast_nullable_to_non_nullable
+              as Future<void>?,
+      stop: freezed == stop
+          ? _value.stop
+          : stop // ignore: cast_nullable_to_non_nullable
+              as Audio?,
     ) as $Val);
   }
 }
@@ -231,7 +354,7 @@ abstract class _$$MusicStateImplCopyWith<$Res>
       __$$MusicStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isMuted, Audio audio});
+  $Res call({bool isMuted, Future<void>? play, Audio? stop});
 }
 
 /// @nodoc
@@ -248,17 +371,22 @@ class __$$MusicStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isMuted = null,
-    Object? audio = null,
+    Object? play = freezed,
+    Object? stop = freezed,
   }) {
     return _then(_$MusicStateImpl(
       isMuted: null == isMuted
           ? _value.isMuted
           : isMuted // ignore: cast_nullable_to_non_nullable
               as bool,
-      audio: null == audio
-          ? _value.audio
-          : audio // ignore: cast_nullable_to_non_nullable
-              as Audio,
+      play: freezed == play
+          ? _value.play
+          : play // ignore: cast_nullable_to_non_nullable
+              as Future<void>?,
+      stop: freezed == stop
+          ? _value.stop
+          : stop // ignore: cast_nullable_to_non_nullable
+              as Audio?,
     ));
   }
 }
@@ -266,16 +394,18 @@ class __$$MusicStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MusicStateImpl implements _MusicState {
-  const _$MusicStateImpl({required this.isMuted, required this.audio});
+  const _$MusicStateImpl({required this.isMuted, this.play, this.stop});
 
   @override
   final bool isMuted;
   @override
-  final Audio audio;
+  final Future<void>? play;
+  @override
+  final Audio? stop;
 
   @override
   String toString() {
-    return 'MusicState(isMuted: $isMuted, audio: $audio)';
+    return 'MusicState(isMuted: $isMuted, play: $play, stop: $stop)';
   }
 
   @override
@@ -284,11 +414,12 @@ class _$MusicStateImpl implements _MusicState {
         (other.runtimeType == runtimeType &&
             other is _$MusicStateImpl &&
             (identical(other.isMuted, isMuted) || other.isMuted == isMuted) &&
-            (identical(other.audio, audio) || other.audio == audio));
+            (identical(other.play, play) || other.play == play) &&
+            (identical(other.stop, stop) || other.stop == stop));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isMuted, audio);
+  int get hashCode => Object.hash(runtimeType, isMuted, play, stop);
 
   /// Create a copy of MusicState
   /// with the given fields replaced by the non-null parameter values.
@@ -302,12 +433,15 @@ class _$MusicStateImpl implements _MusicState {
 abstract class _MusicState implements MusicState {
   const factory _MusicState(
       {required final bool isMuted,
-      required final Audio audio}) = _$MusicStateImpl;
+      final Future<void>? play,
+      final Audio? stop}) = _$MusicStateImpl;
 
   @override
   bool get isMuted;
   @override
-  Audio get audio;
+  Future<void>? get play;
+  @override
+  Audio? get stop;
 
   /// Create a copy of MusicState
   /// with the given fields replaced by the non-null parameter values.

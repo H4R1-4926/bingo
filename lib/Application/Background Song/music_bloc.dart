@@ -10,10 +10,17 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
   final audio = Audio();
   MusicBloc() : super(MusicState.initial()) {
     on<AppOpensAndInsideApp>((event, emit) {
-      emit(MusicState(
-        isMuted: false,
-        audio: Audio(),
-      ));
+      emit(MusicState(isMuted: true, play: audio.bgPlay()));
+    });
+    on<Toggle>((event, emit) {
+      if (state.isMuted == true) {
+        audio.stopPlaing();
+        emit(state.copyWith(isMuted: true));
+      } else {
+        audio.play();
+        emit(state.copyWith(isMuted: false));
+      }
+      emit(MusicState(isMuted: !state.isMuted));
     });
   }
 }

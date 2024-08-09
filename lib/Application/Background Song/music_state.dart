@@ -2,14 +2,11 @@ part of 'music_bloc.dart';
 
 @freezed
 class MusicState with _$MusicState {
-  const factory MusicState({
-    required bool isMuted,
-    required Audio audio,
-  }) = _MusicState;
+  const factory MusicState(
+      {required bool isMuted, Future<void>? play, Audio? stop}) = _MusicState;
   factory MusicState.initial() {
-    return MusicState(
-      isMuted: false,
-      audio: Audio(),
+    return const MusicState(
+      isMuted: true,
     );
   }
 }
