@@ -1,8 +1,6 @@
-import 'package:bingo/Application/Background%20Song/music_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class Homepage extends StatelessWidget {
@@ -10,31 +8,19 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      return context
-          .read<MusicBloc>()
-          .add(const MusicEvent.appOpensAndInsideApp());
-    });
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: kthemecolor,
       appBar: AppBar(
         forceMaterialTransparency: true,
         actions: [
-          BlocBuilder<MusicBloc, MusicState>(
-            builder: (context, state) {
-              return IconButton(
-                  onPressed: () {
-                    context.read<MusicBloc>().add(const Toggle());
-                  },
-                  icon: Icon(
-                    state.isMuted ? Icons.volume_up : Icons.volume_off,
-                    color: kred,
-                    size: 35,
-                  ));
-            },
-          )
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.volume_off,
+                color: kred,
+                size: 35,
+              ))
         ],
       ),
       body: Stack(
