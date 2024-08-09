@@ -16,4 +16,8 @@ class Audio {
   void stopPlaing() {
     _player.stop();
   }
+
+  void dispose() {
+    _player.dispose();
+  }
 }
