@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Infrastructure/music/music.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -17,8 +20,18 @@ class _HomepageState extends State<Homepage> {
 
   @override
   void initState() {
-    audio.bgPlay();
     super.initState();
+    _loadMuteState();
+  }
+
+  void _loadMuteState() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isMuted = prefs.getBool('isMuted') ?? false;
+    });
+    if (!isMuted) {
+      audio.bgPlay();
+    }
   }
 
   @override
@@ -31,7 +44,7 @@ class _HomepageState extends State<Homepage> {
     setState(() {
       isMuted = !isMuted;
       if (isMuted) {
-        audio.stopPlaing();
+        audio.stopPlaying();
       } else {
         audio.play();
       }
@@ -40,6 +53,7 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    log(isMuted.toString());
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: kthemecolor,

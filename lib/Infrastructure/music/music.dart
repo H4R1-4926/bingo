@@ -1,19 +1,28 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Audio {
   final AudioPlayer _player = AudioPlayer();
 
   Future<void> bgPlay() async {
-    await _player.setSource(AssetSource('music/bg.mp3'));
-    _player.setReleaseMode(ReleaseMode.loop);
-    play();
+    final prefs = await SharedPreferences.getInstance();
+    bool isMuted = prefs.getBool('isMuted') ?? false;
+
+    if (!isMuted) {
+      await _player.play(AssetSource('music/bg.mp3'));
+      _player.setReleaseMode(ReleaseMode.loop);
+    }
   }
 
-  void play() {
+  void play() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isMuted', false);
     _player.resume();
   }
 
-  void stopPlaing() {
+  void stopPlaying() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isMuted', true);
     _player.stop();
   }
 
