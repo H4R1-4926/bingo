@@ -1,10 +1,42 @@
 import 'package:bingo/Core/colors/color.dart';
+import 'package:bingo/Infrastructure/music/music.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  final Audio audio = Audio();
+  bool isMuted = false;
+
+  @override
+  void initState() {
+    audio.bgPlay();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    audio.dispose();
+    super.dispose();
+  }
+
+  void toggleMuteButton() {
+    setState(() {
+      isMuted = !isMuted;
+      if (isMuted) {
+        audio.stopPlaing();
+      } else {
+        audio.play();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +47,9 @@ class Homepage extends StatelessWidget {
         forceMaterialTransparency: true,
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.volume_off,
+              onPressed: toggleMuteButton,
+              icon: Icon(
+                isMuted ? Icons.volume_off : Icons.volume_up,
                 color: kred,
                 size: 35,
               ))
