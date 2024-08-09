@@ -82,6 +82,7 @@ class _WinState extends State<Win> {
           ),
           ElevatedButton(
               onPressed: () {
+                context.read<GameBloc>().add(const Reset());
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => const Homepage()),
