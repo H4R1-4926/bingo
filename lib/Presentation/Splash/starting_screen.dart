@@ -6,8 +6,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         backgroundColor: kthemecolor,
-        body: Center(child: Container(height: 100, width: 100, color: kWhite)));
+        body: Center(
+          child: Text(
+            '3...2...1...Go',
+            style: TextStyle(
+                color: kWhite, fontSize: 42, fontWeight: FontWeight.bold),
+          ),
+        ));
   }
 }
