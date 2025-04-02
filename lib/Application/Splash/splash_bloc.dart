@@ -8,9 +8,15 @@ part 'splash_bloc.freezed.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashState.initital()) {
     on<_Started>((event, emit) async {
-      emit(const SplashState(loading: true, loaded: false));
-      await Future.delayed(const Duration(seconds: 2));
-      emit(const SplashState(loading: false, loaded: true));
+      int count = 3;
+
+      while (count > 0) {
+        emit(SplashState(loading: true, loaded: false, count: count));
+        await Future.delayed(const Duration(milliseconds: 800));
+        count--;
+      }
+
+      emit(const SplashState(loading: false, loaded: true, count: 0));
     });
   }
 }

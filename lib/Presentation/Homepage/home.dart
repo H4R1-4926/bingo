@@ -56,15 +56,22 @@ class _HomepageState extends State<Homepage> {
     log(isMuted.toString());
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: kthemecolor,
+      backgroundColor: kblack,
       appBar: AppBar(
-        forceMaterialTransparency: true,
+        backgroundColor: kPrimaryGreen,
+        surfaceTintColor: kPrimaryGreen,
+        leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.dark_mode_outlined,
+              size: 35,
+            )),
         actions: [
           IconButton(
               onPressed: toggleMuteButton,
               icon: Icon(
                 isMuted ? Icons.volume_off : Icons.volume_up,
-                color: kred,
+                color: kblack,
                 size: 35,
               ))
         ],
@@ -78,7 +85,7 @@ class _HomepageState extends State<Homepage> {
                 image: DecorationImage(
                     opacity: 0.09,
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/img/bg.jpg'))),
+                    image: AssetImage('assets/img/bingo strips.png'))),
           ),
           Center(
             child: Column(
@@ -89,7 +96,7 @@ class _HomepageState extends State<Homepage> {
                   width: 320,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/img/bingoTitle_1.png'))),
+                          image: AssetImage('assets/img/Logo.png'))),
                 ),
                 GestureDetector(
                     onTap: () {

@@ -174,6 +174,7 @@ abstract class _Started implements SplashEvent {
 mixin _$SplashState {
   bool get loading => throw _privateConstructorUsedError;
   bool get loaded => throw _privateConstructorUsedError;
+  int get count => throw _privateConstructorUsedError;
 
   /// Create a copy of SplashState
   /// with the given fields replaced by the non-null parameter values.
@@ -188,7 +189,7 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call({bool loading, bool loaded});
+  $Res call({bool loading, bool loaded, int count});
 }
 
 /// @nodoc
@@ -208,6 +209,7 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   $Res call({
     Object? loading = null,
     Object? loaded = null,
+    Object? count = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -218,6 +220,10 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
           ? _value.loaded
           : loaded // ignore: cast_nullable_to_non_nullable
               as bool,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -230,7 +236,7 @@ abstract class _$$SplashStateImplCopyWith<$Res>
       __$$SplashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool loading, bool loaded});
+  $Res call({bool loading, bool loaded, int count});
 }
 
 /// @nodoc
@@ -248,6 +254,7 @@ class __$$SplashStateImplCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
     Object? loaded = null,
+    Object? count = null,
   }) {
     return _then(_$SplashStateImpl(
       loading: null == loading
@@ -258,6 +265,10 @@ class __$$SplashStateImplCopyWithImpl<$Res>
           ? _value.loaded
           : loaded // ignore: cast_nullable_to_non_nullable
               as bool,
+      count: null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -265,16 +276,19 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SplashStateImpl implements _SplashState {
-  const _$SplashStateImpl({required this.loading, required this.loaded});
+  const _$SplashStateImpl(
+      {required this.loading, required this.loaded, required this.count});
 
   @override
   final bool loading;
   @override
   final bool loaded;
+  @override
+  final int count;
 
   @override
   String toString() {
-    return 'SplashState(loading: $loading, loaded: $loaded)';
+    return 'SplashState(loading: $loading, loaded: $loaded, count: $count)';
   }
 
   @override
@@ -283,11 +297,12 @@ class _$SplashStateImpl implements _SplashState {
         (other.runtimeType == runtimeType &&
             other is _$SplashStateImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.loaded, loaded) || other.loaded == loaded));
+            (identical(other.loaded, loaded) || other.loaded == loaded) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, loaded);
+  int get hashCode => Object.hash(runtimeType, loading, loaded, count);
 
   /// Create a copy of SplashState
   /// with the given fields replaced by the non-null parameter values.
@@ -301,12 +316,15 @@ class _$SplashStateImpl implements _SplashState {
 abstract class _SplashState implements SplashState {
   const factory _SplashState(
       {required final bool loading,
-      required final bool loaded}) = _$SplashStateImpl;
+      required final bool loaded,
+      required final int count}) = _$SplashStateImpl;
 
   @override
   bool get loading;
   @override
   bool get loaded;
+  @override
+  int get count;
 
   /// Create a copy of SplashState
   /// with the given fields replaced by the non-null parameter values.

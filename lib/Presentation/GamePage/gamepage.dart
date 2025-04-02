@@ -26,86 +26,104 @@ class GamePage extends StatelessWidget {
         }
         return Scaffold(
             appBar: AppBar(
-              forceMaterialTransparency: true,
+              backgroundColor: kPrimaryGreen,
+              surfaceTintColor: kPrimaryGreen,
+              leading: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Image(image: AssetImage('assets/img/bingo.jpg')),
+              ),
               actions: [
                 IconButton(
-                    onPressed: () {
-                      showMenu(
-                          color: klighttheme,
-                          surfaceTintColor: klighttheme,
-                          context: context,
-                          position:
-                              const RelativeRect.fromLTRB(75, 90, 045, 075),
-                          items: [
-                            PopupMenuItem(
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                          backgroundColor: klighttheme,
-                                          title: const Center(
-                                              child: Text(
-                                            'You want to quit?',
-                                            style: TextStyle(
-                                                fontSize: 17, color: kWhite),
-                                          )),
-                                          content: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                style: const ButtonStyle(
-                                                    backgroundColor:
-                                                        WidgetStatePropertyAll(
-                                                            Colors.redAccent)),
-                                                child: const Text(
-                                                  'No',
-                                                  style:
-                                                      TextStyle(color: kWhite),
-                                                ),
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pushAndRemoveUntil(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const Homepage(),
-                                                      ),
-                                                      (Route<dynamic> route) =>
-                                                          false);
-                                                },
-                                                style: const ButtonStyle(
-                                                    backgroundColor:
-                                                        WidgetStatePropertyAll(
-                                                            Colors.redAccent)),
-                                                child: const Text('Yes',
-                                                    style: TextStyle(
-                                                        color: kWhite)),
-                                              ),
-                                            ],
-                                          ));
-                                    },
-                                  );
-                                },
-                                child: const Text(
-                                  'Home',
-                                  style: TextStyle(color: kWhite),
-                                ))
-                          ]);
-                    },
+                    onPressed: () {},
                     icon: const Icon(
-                      Icons.settings,
-                      color: kred,
-                    ))
+                      Icons.volume_up_outlined,
+                      size: 28,
+                      color: kblack,
+                    )),
+                PopupMenuButton(
+                  color: kPrimaryGreen,
+                  surfaceTintColor: kPrimaryGreen,
+                  icon: const Icon(
+                    Icons.more_vert,
+                    size: 28,
+                    color: kblack,
+                  ),
+                  onSelected: (value) {
+                    if (value == '1') {
+                      context.read<GameBloc>().add(const Reset());
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const GamePage(),
+                        ),
+                      );
+                    } else if (value == '2') {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                              backgroundColor: kPrimaryGreen,
+                              title: const Center(
+                                  child: Text(
+                                'You want to quit?',
+                                style: TextStyle(fontSize: 17, color: kblack),
+                              )),
+                              content: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    style: const ButtonStyle(
+                                        backgroundColor:
+                                            WidgetStatePropertyAll(kDarkGreen)),
+                                    child: const Text(
+                                      'No',
+                                      style: TextStyle(color: kWhite),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Homepage(),
+                                          ),
+                                          (Route<dynamic> route) => false);
+                                    },
+                                    style: const ButtonStyle(
+                                        backgroundColor:
+                                            WidgetStatePropertyAll(kDarkGreen)),
+                                    child: const Text('Yes',
+                                        style: TextStyle(color: kWhite)),
+                                  ),
+                                ],
+                              ));
+                        },
+                      );
+                    }
+                  },
+                  itemBuilder: (context) {
+                    return [
+                      const PopupMenuItem(
+                        textStyle: TextStyle(color: kblack, fontSize: 20),
+                        value: '1',
+                        child: Center(child: Text('Restart')),
+                      ),
+                      const PopupMenuItem(
+                        textStyle: TextStyle(color: kblack, fontSize: 20),
+                        value: '2',
+                        child: Center(child: Text('Home')),
+                      )
+                    ];
+                  },
+                )
               ],
               automaticallyImplyLeading: false,
             ),
-            backgroundColor: kthemecolor,
+            backgroundColor: kblack,
             body: BlocConsumer<GameBloc, GameState>(
               listener: (context, state) {
                 if (state.winnibgCombs.where((element) => element).length > 4) {
@@ -119,7 +137,6 @@ class GamePage extends StatelessWidget {
 
                 log(state.winnibgCombs.toString());
 
-                // Count the number of true values in winningCombs
                 int trueCount =
                     state.winnibgCombs.where((element) => element).length;
 
@@ -151,16 +168,18 @@ class GamePage extends StatelessWidget {
                             child: Container(
                                 decoration: BoxDecoration(
                                     color: state.isClicked[index]
-                                        ? kred
-                                        : klighttheme,
+                                        ? kPrimaryGreen
+                                        : kDarkGreen,
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Center(
                                   child: Text(
                                     state.isClicked[index]
                                         ? 'X'
                                         : numbers[index],
-                                    style: const TextStyle(
-                                        color: Color.fromARGB(255, 255, 53, 53),
+                                    style: TextStyle(
+                                        color: state.isClicked[index]
+                                            ? kblack
+                                            : kWhite,
                                         fontSize: 25,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -177,17 +196,17 @@ class GamePage extends StatelessWidget {
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 color:
-                                    trueCount > 0 ? Colors.green : klighttheme,
+                                    trueCount > 0 ? kPrimaryGreen : kDarkGreen,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'B',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 80,
-                                    color: Color.fromARGB(255, 255, 255, 0)),
+                                    color: trueCount > 0 ? kblack : kWhite),
                               ),
                             ),
                           ),
@@ -197,17 +216,17 @@ class GamePage extends StatelessWidget {
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 color:
-                                    trueCount > 1 ? Colors.green : klighttheme,
+                                    trueCount > 1 ? kPrimaryGreen : kDarkGreen,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'I',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 80,
-                                    color: Color.fromARGB(255, 255, 255, 0)),
+                                    color: trueCount > 1 ? kblack : kWhite),
                               ),
                             ),
                           ),
@@ -217,17 +236,17 @@ class GamePage extends StatelessWidget {
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 color:
-                                    trueCount > 2 ? Colors.green : klighttheme,
+                                    trueCount > 2 ? kPrimaryGreen : kDarkGreen,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'N',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 80,
-                                    color: Color.fromARGB(255, 255, 255, 0)),
+                                    color: trueCount > 2 ? kblack : kWhite),
                               ),
                             ),
                           ),
@@ -237,17 +256,17 @@ class GamePage extends StatelessWidget {
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 color:
-                                    trueCount > 3 ? Colors.green : klighttheme,
+                                    trueCount > 3 ? kPrimaryGreen : kDarkGreen,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'G',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 80,
-                                    color: Color.fromARGB(255, 255, 255, 0)),
+                                    color: trueCount > 3 ? kblack : kWhite),
                               ),
                             ),
                           ),
@@ -257,17 +276,17 @@ class GamePage extends StatelessWidget {
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 color:
-                                    trueCount > 4 ? Colors.green : klighttheme,
+                                    trueCount > 4 ? kPrimaryGreen : kDarkGreen,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
-                            child: const Center(
+                            child: Center(
                               child: Text(
                                 'O',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 80,
-                                    color: Color.fromARGB(255, 255, 255, 0)),
+                                    color: trueCount > 4 ? kblack : kWhite),
                               ),
                             ),
                           ),

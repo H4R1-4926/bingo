@@ -9,7 +9,7 @@ class Audio {
     bool isMuted = prefs.getBool('isMuted') ?? false;
 
     if (!isMuted) {
-      await _player.play(AssetSource('music/bg.mp3'));
+      await _player.play(AssetSource('music/music.mp3'));
       _player.setReleaseMode(ReleaseMode.loop);
     }
   }

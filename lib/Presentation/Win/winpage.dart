@@ -37,67 +37,71 @@ class _WinState extends State<Win> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kthemecolor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: kblack,
+      body: Stack(
         children: [
-          Stack(
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    opacity: 0.09,
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/img/bingo strips.png'))),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(
-                height: 300,
-                width: double.infinity,
-              ),
-              Center(
-                child: AnimatedContainer(
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.fastOutSlowIn,
-                  width: _isExpanded ? 180.0 : 150.0,
-                  height: _isExpanded ? 180.0 : 150.0,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/img/bingo.png'))),
-                ),
+              const Center(
+                  child: Image(
+                image: AssetImage('assets/img/Logo.png'),
+              )),
+              Column(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        context.read<GameBloc>().add(const Reset());
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const GamePage(),
+                          ),
+                        );
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(kDarkGreen),
+                          foregroundColor: WidgetStatePropertyAll(kWhite),
+                          fixedSize: WidgetStatePropertyAll(Size(240, 40))),
+                      child: const Text(
+                        'Rematch',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        context.read<GameBloc>().add(const Reset());
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Homepage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(kPrimaryGreen),
+                          foregroundColor: WidgetStatePropertyAll(kblack),
+                          fixedSize: WidgetStatePropertyAll(Size(240, 40))),
+                      child: const Text(
+                        'Home',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                ],
               ),
             ],
           ),
-          ElevatedButton(
-              onPressed: () {
-                context.read<GameBloc>().add(const Reset());
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const GamePage(),
-                  ),
-                );
-              },
-              style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(kred),
-                  foregroundColor: WidgetStatePropertyAll(kWhite),
-                  fixedSize: WidgetStatePropertyAll(Size(240, 40))),
-              child: const Text(
-                'Rematch',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )),
-          const SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                context.read<GameBloc>().add(const Reset());
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Homepage()),
-                  (Route<dynamic> route) => false,
-                );
-              },
-              style: const ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(Color.fromARGB(255, 252, 208, 10)),
-                  foregroundColor: WidgetStatePropertyAll(kblack),
-                  fixedSize: WidgetStatePropertyAll(Size(240, 40))),
-              child: const Text(
-                'Home',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )),
         ],
       ),
     );
