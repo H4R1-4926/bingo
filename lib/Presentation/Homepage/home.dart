@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Infrastructure/music/music.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
+import 'package:bingo/Presentation/Privacy%20policy/privacy_policy.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,6 +23,7 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     super.initState();
     _loadMuteState();
+    audio.play();
   }
 
   void _loadMuteState() async {
@@ -60,12 +62,10 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         backgroundColor: kPrimaryGreen,
         surfaceTintColor: kPrimaryGreen,
-        leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.dark_mode_outlined,
-              size: 35,
-            )),
+        leading: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Image(image: AssetImage('assets/img/bingo.jpg')),
+        ),
         actions: [
           IconButton(
               onPressed: toggleMuteButton,
@@ -73,7 +73,34 @@ class _HomepageState extends State<Homepage> {
                 isMuted ? Icons.volume_off : Icons.volume_up,
                 color: kblack,
                 size: 35,
-              ))
+              )),
+          PopupMenuButton(
+            color: kPrimaryGreen,
+            surfaceTintColor: kPrimaryGreen,
+            icon: const Icon(
+              Icons.more_vert,
+              size: 28,
+              color: kblack,
+            ),
+            onSelected: (value) {
+              if (value == '1') {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicyPage(),
+                  ),
+                );
+              }
+            },
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem(
+                  textStyle: TextStyle(color: kblack, fontSize: 20),
+                  value: '1',
+                  child: Center(child: Text('Privacy Policy')),
+                ),
+              ];
+            },
+          )
         ],
       ),
       body: Stack(
