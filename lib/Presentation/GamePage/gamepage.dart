@@ -9,9 +9,14 @@ import 'package:bingo/Presentation/Win/winpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class GamePage extends StatelessWidget {
+class GamePage extends StatefulWidget {
   const GamePage({super.key});
 
+  @override
+  State<GamePage> createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -33,13 +38,6 @@ class GamePage extends StatelessWidget {
                 child: Image(image: AssetImage('assets/img/bingo.jpg')),
               ),
               actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.volume_up_outlined,
-                      size: 28,
-                      color: kblack,
-                    )),
                 PopupMenuButton(
                   color: kPrimaryGreen,
                   surfaceTintColor: kPrimaryGreen,
@@ -124,178 +122,233 @@ class GamePage extends StatelessWidget {
               automaticallyImplyLeading: false,
             ),
             backgroundColor: kblack,
-            body: BlocConsumer<GameBloc, GameState>(
-              listener: (context, state) {
-                if (state.winnibgCombs.where((element) => element).length > 4) {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Win(),
-                  ));
-                }
-              },
-              builder: (context, state) {
-                final numbers = state.numbers;
-
-                log(state.winnibgCombs.toString());
-
-                int trueCount =
-                    state.winnibgCombs.where((element) => element).length;
-
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                        child: SizedBox(
-                      height: MediaQuery.of(context).size.height / 1.5,
-                      width: MediaQuery.of(context).size.width / 1.2,
-                      child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: 25,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                mainAxisSpacing: 8,
-                                mainAxisExtent: 90,
-                                crossAxisSpacing: 8,
-                                crossAxisCount: 5),
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              if (!state.isClicked[index]) {
-                                context
-                                    .read<GameBloc>()
-                                    .add(Mark(index: index));
-                              }
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: state.isClicked[index]
-                                        ? kPrimaryGreen
-                                        : kDarkGreen,
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Center(
-                                  child: Text(
-                                    state.isClicked[index]
-                                        ? 'X'
-                                        : numbers[index],
-                                    style: TextStyle(
-                                        color: state.isClicked[index]
-                                            ? kblack
-                                            : kWhite,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )),
-                          );
-                        },
-                      ),
-                    )),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Row(children: [
-                        Flexible(
-                          child: Container(
-                            margin: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color:
-                                    trueCount > 0 ? kPrimaryGreen : kDarkGreen,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: 120,
-                            width: 100,
-                            child: Center(
-                              child: Text(
-                                'B',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 80,
-                                    color: trueCount > 0 ? kblack : kWhite),
+            body: PopScope(
+              canPop: false,
+              onPopInvokedWithResult: (didPop, result) {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                        backgroundColor: kPrimaryGreen,
+                        title: const Center(
+                            child: Text(
+                          'You want to quit?',
+                          style: TextStyle(fontSize: 17, color: kblack),
+                        )),
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: const ButtonStyle(
+                                  backgroundColor:
+                                      WidgetStatePropertyAll(kDarkGreen)),
+                              child: const Text(
+                                'No',
+                                style: TextStyle(color: kWhite),
                               ),
                             ),
-                          ),
-                        ),
-                        Flexible(
-                          child: Container(
-                            margin: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color:
-                                    trueCount > 1 ? kPrimaryGreen : kDarkGreen,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: 120,
-                            width: 100,
-                            child: Center(
-                              child: Text(
-                                'I',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 80,
-                                    color: trueCount > 1 ? kblack : kWhite),
-                              ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Homepage(),
+                                    ),
+                                    (Route<dynamic> route) => false);
+                              },
+                              style: const ButtonStyle(
+                                  backgroundColor:
+                                      WidgetStatePropertyAll(kDarkGreen)),
+                              child: const Text('Yes',
+                                  style: TextStyle(color: kWhite)),
                             ),
-                          ),
-                        ),
-                        Flexible(
-                          child: Container(
-                            margin: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color:
-                                    trueCount > 2 ? kPrimaryGreen : kDarkGreen,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: 120,
-                            width: 100,
-                            child: Center(
-                              child: Text(
-                                'N',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 80,
-                                    color: trueCount > 2 ? kblack : kWhite),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Flexible(
-                          child: Container(
-                            margin: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color:
-                                    trueCount > 3 ? kPrimaryGreen : kDarkGreen,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: 120,
-                            width: 100,
-                            child: Center(
-                              child: Text(
-                                'G',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 80,
-                                    color: trueCount > 3 ? kblack : kWhite),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Flexible(
-                          child: Container(
-                            margin: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color:
-                                    trueCount > 4 ? kPrimaryGreen : kDarkGreen,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: 120,
-                            width: 100,
-                            child: Center(
-                              child: Text(
-                                'O',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 80,
-                                    color: trueCount > 4 ? kblack : kWhite),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ]),
-                    )
-                  ],
+                          ],
+                        ));
+                  },
                 );
               },
+              child: BlocConsumer<GameBloc, GameState>(
+                listener: (context, state) {
+                  if (state.winnibgCombs.where((element) => element).length >
+                      4) {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const Win(),
+                    ));
+                  }
+                },
+                builder: (context, state) {
+                  final numbers = state.numbers;
+
+                  log(state.winnibgCombs.toString());
+
+                  int trueCount =
+                      state.winnibgCombs.where((element) => element).length;
+
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                          child: SizedBox(
+                        height: MediaQuery.of(context).size.height / 1.5,
+                        width: MediaQuery.of(context).size.width / 1.2,
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 25,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisSpacing: 8,
+                                  mainAxisExtent: 90,
+                                  crossAxisSpacing: 8,
+                                  crossAxisCount: 5),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                if (!state.isClicked[index]) {
+                                  context
+                                      .read<GameBloc>()
+                                      .add(Mark(index: index));
+                                }
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: state.isClicked[index]
+                                          ? kPrimaryGreen
+                                          : kDarkGreen,
+                                      borderRadius: BorderRadius.circular(16)),
+                                  child: Center(
+                                    child: Text(
+                                      state.isClicked[index]
+                                          ? 'X'
+                                          : numbers[index],
+                                      style: TextStyle(
+                                          color: state.isClicked[index]
+                                              ? kblack
+                                              : kWhite,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )),
+                            );
+                          },
+                        ),
+                      )),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Row(children: [
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: trueCount > 0
+                                      ? kPrimaryGreen
+                                      : kDarkGreen,
+                                  borderRadius: BorderRadius.circular(10)),
+                              height: 120,
+                              width: 100,
+                              child: Center(
+                                child: Text(
+                                  'B',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 80,
+                                      color: trueCount > 0 ? kblack : kWhite),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: trueCount > 1
+                                      ? kPrimaryGreen
+                                      : kDarkGreen,
+                                  borderRadius: BorderRadius.circular(10)),
+                              height: 120,
+                              width: 100,
+                              child: Center(
+                                child: Text(
+                                  'I',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 80,
+                                      color: trueCount > 1 ? kblack : kWhite),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: trueCount > 2
+                                      ? kPrimaryGreen
+                                      : kDarkGreen,
+                                  borderRadius: BorderRadius.circular(10)),
+                              height: 120,
+                              width: 100,
+                              child: Center(
+                                child: Text(
+                                  'N',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 80,
+                                      color: trueCount > 2 ? kblack : kWhite),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: trueCount > 3
+                                      ? kPrimaryGreen
+                                      : kDarkGreen,
+                                  borderRadius: BorderRadius.circular(10)),
+                              height: 120,
+                              width: 100,
+                              child: Center(
+                                child: Text(
+                                  'G',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 80,
+                                      color: trueCount > 3 ? kblack : kWhite),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: trueCount > 4
+                                      ? kPrimaryGreen
+                                      : kDarkGreen,
+                                  borderRadius: BorderRadius.circular(10)),
+                              height: 120,
+                              width: 100,
+                              child: Center(
+                                child: Text(
+                                  'O',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 80,
+                                      color: trueCount > 4 ? kblack : kWhite),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]),
+                      )
+                    ],
+                  );
+                },
+              ),
             ));
       },
     );

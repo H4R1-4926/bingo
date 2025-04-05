@@ -6,7 +6,6 @@ import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:bingo/Presentation/Privacy%20policy/privacy_policy.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -16,46 +15,29 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final Audio audio = Audio();
-  bool isMuted = false;
+  bool _isMuted = false;
+  final Audio _audio = Audio();
 
   @override
   void initState() {
     super.initState();
-    _loadMuteState();
-    audio.play();
+    _initializeAudio();
   }
 
-  void _loadMuteState() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isMuted = prefs.getBool('isMuted') ?? false;
-    });
-    if (!isMuted) {
-      audio.bgPlay();
-    }
+  Future<void> _initializeAudio() async {
+    await _audio.initialize();
+    _audio.bgPlay();
+    _updateMuteState();
   }
 
-  @override
-  void dispose() {
-    audio.dispose();
-    super.dispose();
-  }
-
-  void toggleMuteButton() {
-    setState(() {
-      isMuted = !isMuted;
-      if (isMuted) {
-        audio.stopPlaying();
-      } else {
-        audio.play();
-      }
-    });
+  Future<void> _updateMuteState() async {
+    bool muted = await _audio.isMuted();
+    setState(() => _isMuted = muted);
   }
 
   @override
   Widget build(BuildContext context) {
-    log(isMuted.toString());
+    log(_isMuted.toString());
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: kblack,
@@ -68,9 +50,12 @@ class _HomepageState extends State<Homepage> {
         ),
         actions: [
           IconButton(
-              onPressed: toggleMuteButton,
+              onPressed: () async {
+                await _audio.toggleMute();
+                _updateMuteState();
+              },
               icon: Icon(
-                isMuted ? Icons.volume_off : Icons.volume_up,
+                _isMuted ? Icons.volume_off_outlined : Icons.volume_up_outlined,
                 color: kblack,
                 size: 35,
               )),
