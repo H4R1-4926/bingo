@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bingo/Application/Advertisemnet/ad_bloc.dart';
 import 'package:bingo/Application/GameBlocs/game_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
@@ -81,6 +82,9 @@ class _WinState extends State<Win> {
                   ),
                   ElevatedButton(
                       onPressed: () {
+                        context
+                            .read<AdBloc>()
+                            .add(const AdEvent.interstatial());
                         context.read<GameBloc>().add(const Reset());
                         Navigator.pushAndRemoveUntil(
                           context,
