@@ -10,6 +10,21 @@ class Audio {
   final AudioPlayer _player = AudioPlayer();
   bool _isInitialized = false;
   bool _isPlaying = false;
+  bool _wasPlayingBeforeAd = false;
+
+  void markIntentToResume() {
+    _wasPlayingBeforeAd = _isPlaying;
+  }
+
+  Future<void> restoreIntentAfterAd() async {
+    bool muted = await isMuted();
+    if (_wasPlayingBeforeAd && !muted) {
+      await bgPlay();
+    } else {
+      await stopPlaying();
+    }
+    _wasPlayingBeforeAd = false;
+  }
 
   Future<void> initialize() async {
     if (!_isInitialized) {

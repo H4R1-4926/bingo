@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:bingo/Application/Advertisemnet/ad_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:bingo/Infrastructure/music/music.dart';
 import 'package:bingo/Presentation/GamePage/gamepage.dart';
 import 'package:bingo/Presentation/Privacy%20policy/privacy_policy.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class Homepage extends StatefulWidget {
@@ -42,8 +44,8 @@ class _HomepageState extends State<Homepage> {
       extendBodyBehindAppBar: true,
       backgroundColor: kblack,
       appBar: AppBar(
-        backgroundColor: kPrimaryGreen,
-        surfaceTintColor: kPrimaryGreen,
+        backgroundColor: kPrimaryColor,
+        surfaceTintColor: kPrimaryColor,
         leading: const Padding(
           padding: EdgeInsets.all(8.0),
           child: Image(image: AssetImage('assets/img/bingo.jpg')),
@@ -60,8 +62,8 @@ class _HomepageState extends State<Homepage> {
                 size: 35,
               )),
           PopupMenuButton(
-            color: kPrimaryGreen,
-            surfaceTintColor: kPrimaryGreen,
+            color: kPrimaryColor,
+            surfaceTintColor: kPrimaryColor,
             icon: const Icon(
               Icons.more_vert,
               size: 28,
@@ -74,6 +76,7 @@ class _HomepageState extends State<Homepage> {
                     builder: (context) => const PrivacyPolicyPage(),
                   ),
                 );
+                context.read<AdBloc>().add(const AdEvent.interstatial());
               }
             },
             itemBuilder: (context) {
@@ -95,7 +98,7 @@ class _HomepageState extends State<Homepage> {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    opacity: 0.09,
+                    opacity: 0.2,
                     fit: BoxFit.cover,
                     image: AssetImage('assets/img/bingo strips.png'))),
           ),

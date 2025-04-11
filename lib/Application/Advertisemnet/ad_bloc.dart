@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:bingo/Domain/Ad/advertisement.dart';
+import 'package:bingo/Infrastructure/music/music.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -11,6 +13,7 @@ part 'ad_bloc.freezed.dart';
 
 class AdBloc extends Bloc<AdEvent, AdState> {
   BannerAd? _bannerAd;
+
   InterstitialAd? _interstitialAd;
   AdBloc() : super(AdState.initial()) {
     on<Started>((event, emit) async {
@@ -30,26 +33,30 @@ class AdBloc extends Bloc<AdEvent, AdState> {
           .load();
       emit(AdState(ads: _bannerAd));
     });
-    on<_Interstatial>((event, emit) {
+    on<_Interstatial>((event, emit) async {
+      Audio().markIntentToResume();
       InterstitialAd.load(
           adUnitId: AdHelper.interstatialAdUnitId,
           request: const AdRequest(),
           adLoadCallback: InterstitialAdLoadCallback(
             onAdLoaded: (ad) {
               ad.fullScreenContentCallback = FullScreenContentCallback(
-                onAdDismissedFullScreenContent: (ad) {},
+                onAdDismissedFullScreenContent: (ad) async {
+                  await Audio().restoreIntentAfterAd();
+
+                  ad.dispose();
+                },
                 onAdFailedToShowFullScreenContent: (ad, error) {
                   ad.dispose();
                 },
               );
               _interstitialAd = ad;
+              _interstitialAd?.show();
             },
             onAdFailedToLoad: (error) {
               log('InterstitialAd failed to load: $error');
             },
           ));
-
-      _interstitialAd?.show();
     });
   }
   @override

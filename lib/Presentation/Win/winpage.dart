@@ -46,7 +46,7 @@ class _WinState extends State<Win> {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    opacity: 0.09,
+                    opacity: 0.2,
                     fit: BoxFit.cover,
                     image: AssetImage('assets/img/bingo strips.png'))),
           ),
@@ -70,7 +70,8 @@ class _WinState extends State<Win> {
                         );
                       },
                       style: const ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(kDarkGreen),
+                          backgroundColor:
+                              WidgetStatePropertyAll(kSecondaryColor),
                           foregroundColor: WidgetStatePropertyAll(kWhite),
                           fixedSize: WidgetStatePropertyAll(Size(240, 40))),
                       child: const Text(
@@ -95,7 +96,7 @@ class _WinState extends State<Win> {
                       },
                       style: const ButtonStyle(
                           backgroundColor:
-                              WidgetStatePropertyAll(kPrimaryGreen),
+                              WidgetStatePropertyAll(kPrimaryColor),
                           foregroundColor: WidgetStatePropertyAll(kblack),
                           fixedSize: WidgetStatePropertyAll(Size(240, 40))),
                       child: const Text(

@@ -33,16 +33,16 @@ class GamePage extends StatelessWidget {
         }
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: kPrimaryGreen,
-            surfaceTintColor: kPrimaryGreen,
+            backgroundColor: kPrimaryColor,
+            surfaceTintColor: kPrimaryColor,
             leading: const Padding(
               padding: EdgeInsets.all(8.0),
               child: Image(image: AssetImage('assets/img/bingo.jpg')),
             ),
             actions: [
               PopupMenuButton(
-                color: kPrimaryGreen,
-                surfaceTintColor: kPrimaryGreen,
+                color: kPrimaryColor,
+                surfaceTintColor: kPrimaryColor,
                 icon: const Icon(
                   Icons.more_vert,
                   size: 28,
@@ -61,7 +61,7 @@ class GamePage extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                            backgroundColor: kPrimaryGreen,
+                            backgroundColor: kPrimaryColor,
                             title: const Center(
                                 child: Text(
                               'You want to quit?',
@@ -75,8 +75,8 @@ class GamePage extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                   style: const ButtonStyle(
-                                      backgroundColor:
-                                          WidgetStatePropertyAll(kDarkGreen)),
+                                      backgroundColor: WidgetStatePropertyAll(
+                                          kSecondaryColor)),
                                   child: const Text(
                                     'No',
                                     style: TextStyle(color: kWhite),
@@ -97,8 +97,8 @@ class GamePage extends StatelessWidget {
                                         (Route<dynamic> route) => false);
                                   },
                                   style: const ButtonStyle(
-                                      backgroundColor:
-                                          WidgetStatePropertyAll(kDarkGreen)),
+                                      backgroundColor: WidgetStatePropertyAll(
+                                          kSecondaryColor)),
                                   child: const Text('Yes',
                                       style: TextStyle(color: kWhite)),
                                 ),
@@ -134,7 +134,7 @@ class GamePage extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                      backgroundColor: kPrimaryGreen,
+                      backgroundColor: kPrimaryColor,
                       title: const Center(
                           child: Text(
                         'You want to quit?',
@@ -149,7 +149,7 @@ class GamePage extends StatelessWidget {
                             },
                             style: const ButtonStyle(
                                 backgroundColor:
-                                    WidgetStatePropertyAll(kDarkGreen)),
+                                    WidgetStatePropertyAll(kSecondaryColor)),
                             child: const Text(
                               'No',
                               style: TextStyle(color: kWhite),
@@ -166,7 +166,7 @@ class GamePage extends StatelessWidget {
                             },
                             style: const ButtonStyle(
                                 backgroundColor:
-                                    WidgetStatePropertyAll(kDarkGreen)),
+                                    WidgetStatePropertyAll(kSecondaryColor)),
                             child: const Text('Yes',
                                 style: TextStyle(color: kWhite)),
                           ),
@@ -219,8 +219,8 @@ class GamePage extends StatelessWidget {
                             child: Container(
                                 decoration: BoxDecoration(
                                     color: state.isClicked[index]
-                                        ? kPrimaryGreen
-                                        : kDarkGreen,
+                                        ? kPrimaryColor
+                                        : kSecondaryColor,
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Center(
                                   child: Text(
@@ -246,8 +246,9 @@ class GamePage extends StatelessWidget {
                           child: Container(
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color:
-                                    trueCount > 0 ? kPrimaryGreen : kDarkGreen,
+                                color: trueCount > 0
+                                    ? kPrimaryColor
+                                    : kSecondaryColor,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
@@ -266,8 +267,9 @@ class GamePage extends StatelessWidget {
                           child: Container(
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color:
-                                    trueCount > 1 ? kPrimaryGreen : kDarkGreen,
+                                color: trueCount > 1
+                                    ? kPrimaryColor
+                                    : kSecondaryColor,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
@@ -286,8 +288,9 @@ class GamePage extends StatelessWidget {
                           child: Container(
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color:
-                                    trueCount > 2 ? kPrimaryGreen : kDarkGreen,
+                                color: trueCount > 2
+                                    ? kPrimaryColor
+                                    : kSecondaryColor,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
@@ -306,8 +309,9 @@ class GamePage extends StatelessWidget {
                           child: Container(
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color:
-                                    trueCount > 3 ? kPrimaryGreen : kDarkGreen,
+                                color: trueCount > 3
+                                    ? kPrimaryColor
+                                    : kSecondaryColor,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,
@@ -326,8 +330,9 @@ class GamePage extends StatelessWidget {
                           child: Container(
                             margin: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color:
-                                    trueCount > 4 ? kPrimaryGreen : kDarkGreen,
+                                color: trueCount > 4
+                                    ? kPrimaryColor
+                                    : kSecondaryColor,
                                 borderRadius: BorderRadius.circular(10)),
                             height: 120,
                             width: 100,

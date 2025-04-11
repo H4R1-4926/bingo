@@ -1,20 +1,16 @@
-import 'package:bingo/Application/Advertisemnet/ad_bloc.dart';
 import 'package:bingo/Core/colors/color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
   const PrivacyPolicyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) =>
-        context.read<AdBloc>().add(const AdEvent.interstatial()));
     return Scaffold(
       backgroundColor: kblack,
       appBar: AppBar(
-        backgroundColor: kPrimaryGreen,
-        surfaceTintColor: kPrimaryGreen,
+        backgroundColor: kPrimaryColor,
+        surfaceTintColor: kPrimaryColor,
         automaticallyImplyLeading: true,
         actions: const [
           Padding(
@@ -30,7 +26,7 @@ class PrivacyPolicyPage extends StatelessWidget {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    opacity: 0.09,
+                    opacity: 0.2,
                     fit: BoxFit.cover,
                     image: AssetImage('assets/img/bingo strips.png'))),
           ),
