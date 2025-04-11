@@ -34,7 +34,10 @@ class AdBloc extends Bloc<AdEvent, AdState> {
       emit(AdState(ads: _bannerAd));
     });
     on<_Interstatial>((event, emit) async {
-      Audio().markIntentToResume();
+      final audio = Audio();
+      bool wasMuted = await audio.isMuted();
+      await audio.stopPlaying();
+      //Audio().markIntentToResume();
       InterstitialAd.load(
           adUnitId: AdHelper.interstatialAdUnitId,
           request: const AdRequest(),
@@ -42,9 +45,12 @@ class AdBloc extends Bloc<AdEvent, AdState> {
             onAdLoaded: (ad) {
               ad.fullScreenContentCallback = FullScreenContentCallback(
                 onAdDismissedFullScreenContent: (ad) async {
-                  await Audio().restoreIntentAfterAd();
+                  //await Audio().restoreIntentAfterAd();
 
                   ad.dispose();
+                  if (!wasMuted) {
+                    await audio.bgPlay();
+                  }
                 },
                 onAdFailedToShowFullScreenContent: (ad, error) {
                   ad.dispose();
