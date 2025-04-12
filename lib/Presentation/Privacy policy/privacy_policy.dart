@@ -51,7 +51,7 @@ class PrivacyPolicyPage extends StatelessWidget {
               PPWidget(
                 title: '1. No personal data collection',
                 description:
-                    'We do not collect, styore,or share any personal data from the user. the app dows not required any information of the user to run.',
+                    'We do not collect, store, or share any personal data from the user. the app does not required any information of the user to run.',
               ),
               PPWidget(
                 title: '2. Advertising',
