@@ -1,0 +1,2 @@
+C:/Users/harig/Documents/GitHub/bingo/android/app/.cxx/RelWithDebInfo/1h5k132v/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/harig/Documents/GitHub/bingo/android/app/.cxx/RelWithDebInfo/1h5k132v/arm64-v8a/CMakeFiles/rebuild_cache.dir
