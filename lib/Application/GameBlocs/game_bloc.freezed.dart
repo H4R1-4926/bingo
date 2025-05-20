@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,216 +10,106 @@ part of 'game_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GameEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) mark,
-    required TResult Function() reset,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? mark,
-    TResult? Function()? reset,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? mark,
-    TResult Function()? reset,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(Mark value) mark,
-    required TResult Function(Reset value) reset,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(Mark value)? mark,
-    TResult? Function(Reset value)? reset,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(Mark value)? mark,
-    TResult Function(Reset value)? reset,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $GameEventCopyWith<$Res> {
-  factory $GameEventCopyWith(GameEvent value, $Res Function(GameEvent) then) =
-      _$GameEventCopyWithImpl<$Res, GameEvent>;
-}
-
-/// @nodoc
-class _$GameEventCopyWithImpl<$Res, $Val extends GameEvent>
-    implements $GameEventCopyWith<$Res> {
-  _$GameEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of GameEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$GameEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of GameEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'GameEvent.started()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is GameEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) mark,
-    required TResult Function() reset,
-  }) {
-    return started();
+  String toString() {
+    return 'GameEvent()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? mark,
-    TResult? Function()? reset,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? mark,
-    TResult Function()? reset,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(Mark value) mark,
-    required TResult Function(Reset value) reset,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(Mark value)? mark,
-    TResult? Function(Reset value)? reset,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(Mark value)? mark,
-    TResult Function(Reset value)? reset,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements GameEvent {
-  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$MarkImplCopyWith<$Res> {
-  factory _$$MarkImplCopyWith(
-          _$MarkImpl value, $Res Function(_$MarkImpl) then) =
-      __$$MarkImplCopyWithImpl<$Res>;
+class $GameEventCopyWith<$Res> {
+  $GameEventCopyWith(GameEvent _, $Res Function(GameEvent) __);
+}
+
+/// @nodoc
+
+class _Started implements GameEvent {
+  const _Started();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GameEvent.started()';
+  }
+}
+
+/// @nodoc
+
+class Mark implements GameEvent {
+  const Mark({required this.index});
+
+  final int index;
+
+  /// Create a copy of GameEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MarkCopyWith<Mark> get copyWith =>
+      _$MarkCopyWithImpl<Mark>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Mark &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @override
+  String toString() {
+    return 'GameEvent.mark(index: $index)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $MarkCopyWith<$Res> implements $GameEventCopyWith<$Res> {
+  factory $MarkCopyWith(Mark value, $Res Function(Mark) _then) =
+      _$MarkCopyWithImpl;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$MarkImplCopyWithImpl<$Res>
-    extends _$GameEventCopyWithImpl<$Res, _$MarkImpl>
-    implements _$$MarkImplCopyWith<$Res> {
-  __$$MarkImplCopyWithImpl(_$MarkImpl _value, $Res Function(_$MarkImpl) _then)
-      : super(_value, _then);
+class _$MarkCopyWithImpl<$Res> implements $MarkCopyWith<$Res> {
+  _$MarkCopyWithImpl(this._self, this._then);
+
+  final Mark _self;
+  final $Res Function(Mark) _then;
 
   /// Create a copy of GameEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$MarkImpl(
+    return _then(Mark(
       index: null == index
-          ? _value.index
+          ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -227,305 +118,96 @@ class __$$MarkImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MarkImpl implements Mark {
-  const _$MarkImpl({required this.index});
-
-  @override
-  final int index;
-
-  @override
-  String toString() {
-    return 'GameEvent.mark(index: $index)';
-  }
+class Reset implements GameEvent {
+  const Reset();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MarkImpl &&
-            (identical(other.index, index) || other.index == index));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, index);
-
-  /// Create a copy of GameEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MarkImplCopyWith<_$MarkImpl> get copyWith =>
-      __$$MarkImplCopyWithImpl<_$MarkImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) mark,
-    required TResult Function() reset,
-  }) {
-    return mark(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? mark,
-    TResult? Function()? reset,
-  }) {
-    return mark?.call(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? mark,
-    TResult Function()? reset,
-    required TResult orElse(),
-  }) {
-    if (mark != null) {
-      return mark(index);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(Mark value) mark,
-    required TResult Function(Reset value) reset,
-  }) {
-    return mark(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(Mark value)? mark,
-    TResult? Function(Reset value)? reset,
-  }) {
-    return mark?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(Mark value)? mark,
-    TResult Function(Reset value)? reset,
-    required TResult orElse(),
-  }) {
-    if (mark != null) {
-      return mark(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Mark implements GameEvent {
-  const factory Mark({required final int index}) = _$MarkImpl;
-
-  int get index;
-
-  /// Create a copy of GameEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MarkImplCopyWith<_$MarkImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ResetImplCopyWith<$Res> {
-  factory _$$ResetImplCopyWith(
-          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
-      __$$ResetImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ResetImplCopyWithImpl<$Res>
-    extends _$GameEventCopyWithImpl<$Res, _$ResetImpl>
-    implements _$$ResetImplCopyWith<$Res> {
-  __$$ResetImplCopyWithImpl(
-      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of GameEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$ResetImpl implements Reset {
-  const _$ResetImpl();
-
-  @override
-  String toString() {
-    return 'GameEvent.reset()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ResetImpl);
+        (other.runtimeType == runtimeType && other is Reset);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(int index) mark,
-    required TResult Function() reset,
-  }) {
-    return reset();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(int index)? mark,
-    TResult? Function()? reset,
-  }) {
-    return reset?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(int index)? mark,
-    TResult Function()? reset,
-    required TResult orElse(),
-  }) {
-    if (reset != null) {
-      return reset();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(Mark value) mark,
-    required TResult Function(Reset value) reset,
-  }) {
-    return reset(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(Mark value)? mark,
-    TResult? Function(Reset value)? reset,
-  }) {
-    return reset?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(Mark value)? mark,
-    TResult Function(Reset value)? reset,
-    required TResult orElse(),
-  }) {
-    if (reset != null) {
-      return reset(this);
-    }
-    return orElse();
+  String toString() {
+    return 'GameEvent.reset()';
   }
 }
 
-abstract class Reset implements GameEvent {
-  const factory Reset() = _$ResetImpl;
+/// @nodoc
+
+class Undo implements GameEvent {
+  const Undo();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Undo);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'GameEvent.undo()';
+  }
 }
 
 /// @nodoc
 mixin _$GameState {
-  List<String> get numbers => throw _privateConstructorUsedError;
-  List<bool> get isClicked => throw _privateConstructorUsedError;
-  List<bool> get winnibgCombs => throw _privateConstructorUsedError;
+  List<String> get numbers;
+  List<bool> get isClicked;
+  List<bool> get winnibgCombs;
 
   /// Create a copy of GameState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $GameStateCopyWith<GameState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $GameStateCopyWith<$Res> {
-  factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) =
-      _$GameStateCopyWithImpl<$Res, GameState>;
-  @useResult
-  $Res call(
-      {List<String> numbers, List<bool> isClicked, List<bool> winnibgCombs});
-}
-
-/// @nodoc
-class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
-    implements $GameStateCopyWith<$Res> {
-  _$GameStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of GameState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $GameStateCopyWith<GameState> get copyWith =>
+      _$GameStateCopyWithImpl<GameState>(this as GameState, _$identity);
+
   @override
-  $Res call({
-    Object? numbers = null,
-    Object? isClicked = null,
-    Object? winnibgCombs = null,
-  }) {
-    return _then(_value.copyWith(
-      numbers: null == numbers
-          ? _value.numbers
-          : numbers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isClicked: null == isClicked
-          ? _value.isClicked
-          : isClicked // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
-      winnibgCombs: null == winnibgCombs
-          ? _value.winnibgCombs
-          : winnibgCombs // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GameState &&
+            const DeepCollectionEquality().equals(other.numbers, numbers) &&
+            const DeepCollectionEquality().equals(other.isClicked, isClicked) &&
+            const DeepCollectionEquality()
+                .equals(other.winnibgCombs, winnibgCombs));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(numbers),
+      const DeepCollectionEquality().hash(isClicked),
+      const DeepCollectionEquality().hash(winnibgCombs));
+
+  @override
+  String toString() {
+    return 'GameState(numbers: $numbers, isClicked: $isClicked, winnibgCombs: $winnibgCombs)';
   }
 }
 
 /// @nodoc
-abstract class _$$GameStateImplCopyWith<$Res>
-    implements $GameStateCopyWith<$Res> {
-  factory _$$GameStateImplCopyWith(
-          _$GameStateImpl value, $Res Function(_$GameStateImpl) then) =
-      __$$GameStateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $GameStateCopyWith<$Res> {
+  factory $GameStateCopyWith(GameState value, $Res Function(GameState) _then) =
+      _$GameStateCopyWithImpl;
   @useResult
   $Res call(
       {List<String> numbers, List<bool> isClicked, List<bool> winnibgCombs});
 }
 
 /// @nodoc
-class __$$GameStateImplCopyWithImpl<$Res>
-    extends _$GameStateCopyWithImpl<$Res, _$GameStateImpl>
-    implements _$$GameStateImplCopyWith<$Res> {
-  __$$GameStateImplCopyWithImpl(
-      _$GameStateImpl _value, $Res Function(_$GameStateImpl) _then)
-      : super(_value, _then);
+class _$GameStateCopyWithImpl<$Res> implements $GameStateCopyWith<$Res> {
+  _$GameStateCopyWithImpl(this._self, this._then);
+
+  final GameState _self;
+  final $Res Function(GameState) _then;
 
   /// Create a copy of GameState
   /// with the given fields replaced by the non-null parameter values.
@@ -536,17 +218,17 @@ class __$$GameStateImplCopyWithImpl<$Res>
     Object? isClicked = null,
     Object? winnibgCombs = null,
   }) {
-    return _then(_$GameStateImpl(
+    return _then(_self.copyWith(
       numbers: null == numbers
-          ? _value._numbers
+          ? _self.numbers
           : numbers // ignore: cast_nullable_to_non_nullable
               as List<String>,
       isClicked: null == isClicked
-          ? _value._isClicked
+          ? _self.isClicked
           : isClicked // ignore: cast_nullable_to_non_nullable
               as List<bool>,
       winnibgCombs: null == winnibgCombs
-          ? _value._winnibgCombs
+          ? _self.winnibgCombs
           : winnibgCombs // ignore: cast_nullable_to_non_nullable
               as List<bool>,
     ));
@@ -555,8 +237,8 @@ class __$$GameStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GameStateImpl implements _GameState {
-  const _$GameStateImpl(
+class _GameState implements GameState {
+  const _GameState(
       {required final List<String> numbers,
       required final List<bool> isClicked,
       required final List<bool> winnibgCombs})
@@ -588,16 +270,19 @@ class _$GameStateImpl implements _GameState {
     return EqualUnmodifiableListView(_winnibgCombs);
   }
 
+  /// Create a copy of GameState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'GameState(numbers: $numbers, isClicked: $isClicked, winnibgCombs: $winnibgCombs)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GameStateCopyWith<_GameState> get copyWith =>
+      __$GameStateCopyWithImpl<_GameState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GameStateImpl &&
+            other is _GameState &&
             const DeepCollectionEquality().equals(other._numbers, _numbers) &&
             const DeepCollectionEquality()
                 .equals(other._isClicked, _isClicked) &&
@@ -612,32 +297,55 @@ class _$GameStateImpl implements _GameState {
       const DeepCollectionEquality().hash(_isClicked),
       const DeepCollectionEquality().hash(_winnibgCombs));
 
+  @override
+  String toString() {
+    return 'GameState(numbers: $numbers, isClicked: $isClicked, winnibgCombs: $winnibgCombs)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$GameStateCopyWith<$Res>
+    implements $GameStateCopyWith<$Res> {
+  factory _$GameStateCopyWith(
+          _GameState value, $Res Function(_GameState) _then) =
+      __$GameStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<String> numbers, List<bool> isClicked, List<bool> winnibgCombs});
+}
+
+/// @nodoc
+class __$GameStateCopyWithImpl<$Res> implements _$GameStateCopyWith<$Res> {
+  __$GameStateCopyWithImpl(this._self, this._then);
+
+  final _GameState _self;
+  final $Res Function(_GameState) _then;
+
   /// Create a copy of GameState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
-      __$$GameStateImplCopyWithImpl<_$GameStateImpl>(this, _$identity);
+  $Res call({
+    Object? numbers = null,
+    Object? isClicked = null,
+    Object? winnibgCombs = null,
+  }) {
+    return _then(_GameState(
+      numbers: null == numbers
+          ? _self._numbers
+          : numbers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isClicked: null == isClicked
+          ? _self._isClicked
+          : isClicked // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      winnibgCombs: null == winnibgCombs
+          ? _self._winnibgCombs
+          : winnibgCombs // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+    ));
+  }
 }
 
-abstract class _GameState implements GameState {
-  const factory _GameState(
-      {required final List<String> numbers,
-      required final List<bool> isClicked,
-      required final List<bool> winnibgCombs}) = _$GameStateImpl;
-
-  @override
-  List<String> get numbers;
-  @override
-  List<bool> get isClicked;
-  @override
-  List<bool> get winnibgCombs;
-
-  /// Create a copy of GameState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GameStateImplCopyWith<_$GameStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

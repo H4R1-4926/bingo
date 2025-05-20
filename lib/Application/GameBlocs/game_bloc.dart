@@ -54,9 +54,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     [0, 6, 12, 18, 24],
     [4, 8, 12, 16, 20],
   ];
+
+  final List<List<bool>> _history = [];
+
   GameBloc() : super(GameState.initial()) {
     on<_Started>((event, emit) {
       numbers.shuffle(Random());
+      _history.clear();
       emit(GameState(
         numbers: numbers,
         isClicked: state.isClicked,
@@ -64,17 +68,33 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       ));
     });
     on<Mark>((event, emit) {
-      final isClicked = List<bool>.from(state.isClicked);
-      isClicked[event.index] = !isClicked[event.index];
-      final winningCombinations = checkWinningCombinations(isClicked);
+      final beforeClick =
+          List<bool>.from(state.isClicked); // Copy before change
+      _history.add(beforeClick); // Store the untouched copy
+
+      final updatedClick = List<bool>.from(beforeClick);
+      updatedClick[event.index] = !updatedClick[event.index];
+      final winningCombinations = checkWinningCombinations(updatedClick);
 
       emit(GameState(
         numbers: state.numbers,
-        isClicked: isClicked,
+        isClicked: updatedClick,
         winnibgCombs: winningCombinations,
       ));
     });
+    on<Undo>((event, emit) {
+      if (_history.isNotEmpty) {
+        final last = _history.removeLast();
+        final winningCombinations = checkWinningCombinations(last);
+        emit(GameState(
+          numbers: state.numbers,
+          isClicked: last,
+          winnibgCombs: winningCombinations,
+        ));
+      }
+    });
     on<Reset>((event, emit) {
+      _history.clear();
       emit(GameState.initial());
     });
   }
