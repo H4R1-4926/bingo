@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,344 +10,113 @@ part of 'ad_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AdEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() interstatial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? interstatial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? interstatial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(_Interstatial value) interstatial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(_Interstatial value)? interstatial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(_Interstatial value)? interstatial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AdEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'AdEvent()';
+  }
 }
 
 /// @nodoc
-abstract class $AdEventCopyWith<$Res> {
-  factory $AdEventCopyWith(AdEvent value, $Res Function(AdEvent) then) =
-      _$AdEventCopyWithImpl<$Res, AdEvent>;
-}
-
-/// @nodoc
-class _$AdEventCopyWithImpl<$Res, $Val extends AdEvent>
-    implements $AdEventCopyWith<$Res> {
-  _$AdEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AdEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AdEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AdEvent
-  /// with the given fields replaced by the non-null parameter values.
+class $AdEventCopyWith<$Res> {
+  $AdEventCopyWith(AdEvent _, $Res Function(AdEvent) __);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements Started {
-  const _$StartedImpl();
+class Started implements AdEvent {
+  const Started();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'AdEvent.started()';
   }
+}
+
+/// @nodoc
+
+class _Interstatial implements AdEvent {
+  const _Interstatial();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _Interstatial);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() interstatial,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? interstatial,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? interstatial,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(_Interstatial value) interstatial,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(_Interstatial value)? interstatial,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(_Interstatial value)? interstatial,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Started implements AdEvent {
-  const factory Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$InterstatialImplCopyWith<$Res> {
-  factory _$$InterstatialImplCopyWith(
-          _$InterstatialImpl value, $Res Function(_$InterstatialImpl) then) =
-      __$$InterstatialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InterstatialImplCopyWithImpl<$Res>
-    extends _$AdEventCopyWithImpl<$Res, _$InterstatialImpl>
-    implements _$$InterstatialImplCopyWith<$Res> {
-  __$$InterstatialImplCopyWithImpl(
-      _$InterstatialImpl _value, $Res Function(_$InterstatialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AdEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InterstatialImpl implements _Interstatial {
-  const _$InterstatialImpl();
 
   @override
   String toString() {
     return 'AdEvent.interstatial()';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InterstatialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() interstatial,
-  }) {
-    return interstatial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? interstatial,
-  }) {
-    return interstatial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? interstatial,
-    required TResult orElse(),
-  }) {
-    if (interstatial != null) {
-      return interstatial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(_Interstatial value) interstatial,
-  }) {
-    return interstatial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(_Interstatial value)? interstatial,
-  }) {
-    return interstatial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(_Interstatial value)? interstatial,
-    required TResult orElse(),
-  }) {
-    if (interstatial != null) {
-      return interstatial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Interstatial implements AdEvent {
-  const factory _Interstatial() = _$InterstatialImpl;
 }
 
 /// @nodoc
 mixin _$AdState {
-  BannerAd? get ads => throw _privateConstructorUsedError;
+  BannerAd? get ads;
 
   /// Create a copy of AdState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AdStateCopyWith<AdState> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AdStateCopyWith<$Res> {
-  factory $AdStateCopyWith(AdState value, $Res Function(AdState) then) =
-      _$AdStateCopyWithImpl<$Res, AdState>;
-  @useResult
-  $Res call({BannerAd? ads});
-}
-
-/// @nodoc
-class _$AdStateCopyWithImpl<$Res, $Val extends AdState>
-    implements $AdStateCopyWith<$Res> {
-  _$AdStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AdState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AdStateCopyWith<AdState> get copyWith =>
+      _$AdStateCopyWithImpl<AdState>(this as AdState, _$identity);
+
   @override
-  $Res call({
-    Object? ads = freezed,
-  }) {
-    return _then(_value.copyWith(
-      ads: freezed == ads
-          ? _value.ads
-          : ads // ignore: cast_nullable_to_non_nullable
-              as BannerAd?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AdState &&
+            (identical(other.ads, ads) || other.ads == ads));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, ads);
+
+  @override
+  String toString() {
+    return 'AdState(ads: $ads)';
   }
 }
 
 /// @nodoc
-abstract class _$$AdStateImplCopyWith<$Res> implements $AdStateCopyWith<$Res> {
-  factory _$$AdStateImplCopyWith(
-          _$AdStateImpl value, $Res Function(_$AdStateImpl) then) =
-      __$$AdStateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AdStateCopyWith<$Res> {
+  factory $AdStateCopyWith(AdState value, $Res Function(AdState) _then) =
+      _$AdStateCopyWithImpl;
   @useResult
   $Res call({BannerAd? ads});
 }
 
 /// @nodoc
-class __$$AdStateImplCopyWithImpl<$Res>
-    extends _$AdStateCopyWithImpl<$Res, _$AdStateImpl>
-    implements _$$AdStateImplCopyWith<$Res> {
-  __$$AdStateImplCopyWithImpl(
-      _$AdStateImpl _value, $Res Function(_$AdStateImpl) _then)
-      : super(_value, _then);
+class _$AdStateCopyWithImpl<$Res> implements $AdStateCopyWith<$Res> {
+  _$AdStateCopyWithImpl(this._self, this._then);
+
+  final AdState _self;
+  final $Res Function(AdState) _then;
 
   /// Create a copy of AdState
   /// with the given fields replaced by the non-null parameter values.
@@ -355,9 +125,9 @@ class __$$AdStateImplCopyWithImpl<$Res>
   $Res call({
     Object? ads = freezed,
   }) {
-    return _then(_$AdStateImpl(
+    return _then(_self.copyWith(
       ads: freezed == ads
-          ? _value.ads
+          ? _self.ads
           : ads // ignore: cast_nullable_to_non_nullable
               as BannerAd?,
     ));
@@ -366,47 +136,67 @@ class __$$AdStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AdStateImpl implements _AdState {
-  const _$AdStateImpl({this.ads});
+class _AdState implements AdState {
+  const _AdState({this.ads});
 
   @override
   final BannerAd? ads;
 
+  /// Create a copy of AdState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AdState(ads: $ads)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AdStateCopyWith<_AdState> get copyWith =>
+      __$AdStateCopyWithImpl<_AdState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AdStateImpl &&
+            other is _AdState &&
             (identical(other.ads, ads) || other.ads == ads));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, ads);
 
+  @override
+  String toString() {
+    return 'AdState(ads: $ads)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AdStateCopyWith<$Res> implements $AdStateCopyWith<$Res> {
+  factory _$AdStateCopyWith(_AdState value, $Res Function(_AdState) _then) =
+      __$AdStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({BannerAd? ads});
+}
+
+/// @nodoc
+class __$AdStateCopyWithImpl<$Res> implements _$AdStateCopyWith<$Res> {
+  __$AdStateCopyWithImpl(this._self, this._then);
+
+  final _AdState _self;
+  final $Res Function(_AdState) _then;
+
   /// Create a copy of AdState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AdStateImplCopyWith<_$AdStateImpl> get copyWith =>
-      __$$AdStateImplCopyWithImpl<_$AdStateImpl>(this, _$identity);
+  $Res call({
+    Object? ads = freezed,
+  }) {
+    return _then(_AdState(
+      ads: freezed == ads
+          ? _self.ads
+          : ads // ignore: cast_nullable_to_non_nullable
+              as BannerAd?,
+    ));
+  }
 }
 
-abstract class _AdState implements AdState {
-  const factory _AdState({final BannerAd? ads}) = _$AdStateImpl;
-
-  @override
-  BannerAd? get ads;
-
-  /// Create a copy of AdState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AdStateImplCopyWith<_$AdStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
