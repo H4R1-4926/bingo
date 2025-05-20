@@ -9,7 +9,6 @@ import 'package:bingo/Presentation/Splash/starting_screen.dart';
 import 'package:bingo/Presentation/Win/winpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({super.key});
@@ -20,11 +19,6 @@ class GamePage extends StatelessWidget {
       context.read<GameBloc>().add(const GameEvent.started());
       context.read<SplashBloc>().add(const SplashEvent.started());
     });
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        context.read<AdBloc>().add(const AdEvent.started());
-      },
-    );
 
     return BlocBuilder<SplashBloc, SplashState>(
       builder: (context, state) {
@@ -40,6 +34,16 @@ class GamePage extends StatelessWidget {
               child: Image(image: AssetImage('assets/img/bingo.jpg')),
             ),
             actions: [
+              IconButton(
+                onPressed: () {
+                  context.read<GameBloc>().add(Undo());
+                },
+                icon: Icon(
+                  Icons.undo,
+                  color: kblack,
+                ),
+                tooltip: 'Undo',
+              ),
               PopupMenuButton(
                 color: kPrimaryColor,
                 surfaceTintColor: kPrimaryColor,
@@ -216,25 +220,58 @@ class GamePage extends StatelessWidget {
                                     .add(Mark(index: index));
                               }
                             },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: state.isClicked[index]
-                                        ? kPrimaryColor
-                                        : kSecondaryColor,
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Center(
-                                  child: Text(
-                                    state.isClicked[index]
-                                        ? 'X'
-                                        : numbers[index],
-                                    style: TextStyle(
+                            child: state.isClicked[index]
+                                ? Stack(
+                                    children: [
+                                      Container(
+                                          decoration: BoxDecoration(
+                                              color: kSecondaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(16)),
+                                          child: Center(
+                                            child: Text(
+                                              numbers[index],
+                                              style: TextStyle(
+                                                  color: kWhite,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          )),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  kPrimaryColor.withAlpha(150),
+                                              borderRadius:
+                                                  BorderRadius.circular(16)),
+                                          child: Center(
+                                            child: Text(
+                                              'X',
+                                              style: TextStyle(
+                                                  color: kblack,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          )),
+                                    ],
+                                  )
+                                : Container(
+                                    decoration: BoxDecoration(
                                         color: state.isClicked[index]
-                                            ? kblack
-                                            : kWhite,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )),
+                                            ? kPrimaryColor
+                                            : kSecondaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(16)),
+                                    child: Center(
+                                      child: Text(
+                                        numbers[index],
+                                        style: TextStyle(
+                                            color: state.isClicked[index]
+                                                ? kblack
+                                                : kWhite,
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )),
                           );
                         },
                       ),
@@ -353,18 +390,6 @@ class GamePage extends StatelessWidget {
                 );
               },
             ),
-          ),
-          bottomNavigationBar: BlocBuilder<AdBloc, AdState>(
-            builder: (context, state) {
-              if (state.ads == null) {
-                return const SizedBox();
-              }
-              return SizedBox(
-                height: state.ads!.size.height.toDouble(),
-                width: state.ads!.size.width.toDouble(),
-                child: AdWidget(ad: state.ads!),
-              );
-            },
           ),
         );
       },
