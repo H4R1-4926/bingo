@@ -13,56 +13,60 @@ part 'ad_bloc.freezed.dart';
 
 class AdBloc extends Bloc<AdEvent, AdState> {
   BannerAd? _bannerAd;
-
+  final bool isActive = false;
   InterstitialAd? _interstitialAd;
   AdBloc() : super(AdState.initial()) {
     on<Started>((event, emit) async {
-      BannerAd(
-              size: AdSize.banner,
-              adUnitId: AdHelper.bannerAdUnitId,
-              listener: BannerAdListener(
-                onAdLoaded: (ad) {
-                  _bannerAd = ad as BannerAd;
-                },
-                onAdFailedToLoad: (ad, error) {
-                  log('Failed to load BannerAd: $error');
-                  ad.dispose();
-                },
-              ),
-              request: const AdRequest())
-          .load();
-      emit(AdState(ads: _bannerAd));
+      if (isActive) {
+        BannerAd(
+                size: AdSize.banner,
+                adUnitId: AdHelper.bannerAdUnitId,
+                listener: BannerAdListener(
+                  onAdLoaded: (ad) {
+                    _bannerAd = ad as BannerAd;
+                  },
+                  onAdFailedToLoad: (ad, error) {
+                    log('Failed to load BannerAd: $error');
+                    ad.dispose();
+                  },
+                ),
+                request: const AdRequest())
+            .load();
+        emit(AdState(ads: _bannerAd));
+      }
     });
     on<_Interstatial>((event, emit) async {
-      final audio = Audio();
-      bool wasMuted = await audio.isMuted();
-      await audio.stopPlaying();
-      //Audio().markIntentToResume();
-      InterstitialAd.load(
-          adUnitId: AdHelper.interstatialAdUnitId,
-          request: const AdRequest(),
-          adLoadCallback: InterstitialAdLoadCallback(
-            onAdLoaded: (ad) {
-              ad.fullScreenContentCallback = FullScreenContentCallback(
-                onAdDismissedFullScreenContent: (ad) async {
-                  //await Audio().restoreIntentAfterAd();
+      if (isActive) {
+        final audio = Audio();
+        bool wasMuted = await audio.isMuted();
+        await audio.stopPlaying();
+        //Audio().markIntentToResume();
+        InterstitialAd.load(
+            adUnitId: AdHelper.interstatialAdUnitId,
+            request: const AdRequest(),
+            adLoadCallback: InterstitialAdLoadCallback(
+              onAdLoaded: (ad) {
+                ad.fullScreenContentCallback = FullScreenContentCallback(
+                  onAdDismissedFullScreenContent: (ad) async {
+                    //await Audio().restoreIntentAfterAd();
 
-                  ad.dispose();
-                  if (!wasMuted) {
-                    await audio.bgPlay();
-                  }
-                },
-                onAdFailedToShowFullScreenContent: (ad, error) {
-                  ad.dispose();
-                },
-              );
-              _interstitialAd = ad;
-              _interstitialAd?.show();
-            },
-            onAdFailedToLoad: (error) {
-              log('InterstitialAd failed to load: $error');
-            },
-          ));
+                    ad.dispose();
+                    if (!wasMuted) {
+                      await audio.bgPlay();
+                    }
+                  },
+                  onAdFailedToShowFullScreenContent: (ad, error) {
+                    ad.dispose();
+                  },
+                );
+                _interstitialAd = ad;
+                _interstitialAd?.show();
+              },
+              onAdFailedToLoad: (error) {
+                log('InterstitialAd failed to load: $error');
+              },
+            ));
+      }
     });
   }
   @override
